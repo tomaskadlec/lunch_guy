@@ -1,0 +1,20 @@
+<table>
+{% for dishType, dishes in result -%}
+    <tr>
+        <th colspan="3">{{ dishType }}</th>
+    </tr>
+    {% for dish in dishes  -%}
+    <tr>
+        <td>
+            {{- dish[0] -}}
+            {%- if dish[2] is defined -%}
+            {%- for cafeteria in dish[2]|split(' ') -%}
+                <span class="cafeteria">{{ cafeteria }}</span>
+            {%- endfor -%}
+            {%- endif -%}
+        </td>
+        <td>{{ dish[1]|default("-") }}&nbsp;Kč</td>
+    </tr>
+    {% endfor -%}
+{% endfor -%}
+</table>

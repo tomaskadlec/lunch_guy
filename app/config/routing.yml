@@ -1,0 +1,4 @@
+net_tomas_kadlecd2s:
+    resource: "@NetTomasKadlecd2sBundle/Controller/"
+    type:     annotation
+    prefix:   /
