@@ -11,7 +11,9 @@ Download the project and run ``composer install`` from the project directory.
 
 ## Usage
 
-A configuration must be provided in order to use the application.
+A configuration must be provided in order to use the application. The configuration
+is stored in ``app/config/parameters.yml``. Default values are stored in 
+``app/config/parameters.yml.dist``.
 
 ### Configuration
 
@@ -23,7 +25,7 @@ The following command prints all registered _parsers_ and _outputs_:
 bin/console d2s:info 
 ```
 
-Restaurant configuration consist of a _key_, _uri_ where menu can be found and type
+Restaurant configuration consist of an _id_, _uri_ where menu can be found and type
 of _parser_ to be used. Example configuration may look like:
 
 ```
@@ -58,13 +60,13 @@ d2s:
 
 ### Accessing the web
 
-Web interface consists of a single page accessible as root resource of the application
- - ``/`` (e.g. ``http://server/`` if application runs in the webspace root or ``http://server/app/ 
- if the application runs at ``/app``).
+Web interface consists of a single page accessible as root resource of the application 
+(e.g. ``http://server/`` if application runs in the webspace root or ``http://server/app/``
+if the application runs at ``/app``).
 
-Resources are available for each configured restaurant but these are not supposed
-for ordinary use (URL is ``/restaurantId``, attention ``restaurantID`` must be URL 
-encoded). 
+Other resources are available for each configured restaurant but these are not supposed
+for direct use (URL is ``/restaurantId``, attention ``restaurantID`` must be 
+[URL encoded](https://en.wikipedia.org/wiki/Percent-encoding)).
 
 ### Using command line interface
 
@@ -87,4 +89,5 @@ TBD
 ### Writing custom outputs
 
 TBD
+
 
