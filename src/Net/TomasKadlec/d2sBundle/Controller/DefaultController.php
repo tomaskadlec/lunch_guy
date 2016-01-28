@@ -20,25 +20,8 @@ class DefaultController extends Controller
      */
     public function restaurantAction($restaurantId)
     {
-        $restaurants = $this->getRestaurants();
-        $restaurant = $this->getRestaurant($restaurants, $restaurantId);
-
-        $parser = $this->get('net_tomas_kadlec_d2s.service.parser');
-        if (!$parser->isSupported($restaurant['parser'])) {
-            throw new \RuntimeException('Unsupported format');
-        }
-
-        $client = new Client();
-        $response = $client->request('GET', $restaurant['uri']);
-        if ($response->getStatusCode() == 200) {
-            $result = $parser->parse($restaurant['parser'], $response->getBody()->getContents());
-        } else {
-            new \RuntimeException("Failed. {$response->getBody()->getContents()}");
-        }
         return [
-            'restaurantId' => $restaurantId,
-            'restaurant' => $restaurant,
-            'result' => $result,
+            'result' => $this->getApplication()->retrieve($restaurantId),
         ];
     }
 
@@ -50,25 +33,16 @@ class DefaultController extends Controller
     public function indexAction()
     {
         return [
-            'restaurants' => array_keys($this->getRestaurants()),
+            'restaurants' => $this->getApplication()->getRestaurants(),
         ];
     }
 
-    protected function getRestaurants()
+    /**
+     * @return \Net\TomasKadlec\d2sBundle\Service\Application\Application
+     */
+    protected function getApplication()
     {
-        $config = $this->getParameter('d2s');
-        if (!isset($config['restaurants'])) {
-            throw new \RuntimeException('No configuration');
-        }
-        return $config['restaurants'];
-    }
-
-    protected function getRestaurant(array $restaurants, $restaurant)
-    {
-        if (!isset($restaurants[$restaurant])) {
-            throw new \RuntimeException('No such restaurant');
-        }
-        return $restaurants[$restaurant];
+        return $this->get('net_tomas_kadlec_d2s.service_application.application');
     }
 
 }
