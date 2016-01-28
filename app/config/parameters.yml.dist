@@ -38,6 +38,9 @@ parameters:
             'Pizzerie la fontanella':
                 'uri': 'http://agata.suz.cvut.cz/jidelnicky/index.php?clPodsystem=10'
                 'parser': 'suz'
+            'Masarykova kolej':
+                'uri': 'http://agata.suz.cvut.cz/jidelnicky/index.php?clPodsystem=5'
+                'parser': 'suz'
         output:
             stdout: yes
             slack:
