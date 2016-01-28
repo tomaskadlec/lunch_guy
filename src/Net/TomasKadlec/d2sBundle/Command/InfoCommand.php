@@ -25,12 +25,12 @@ class InfoCommand extends ContainerAwareCommand
         $showOutputs = $input->getOption('outputs');
         if ($showParsers || !($showParsers || $showOutputs)) {
             $output->writeln('Parsers: ' . join(' ',
-                    $this->getContainer()->get('net_tomas_kadlec_d2s.service.parser')->supports()));
+                    $this->getContainer()->get('net_tomas_kadlec_d2s.service_application.application')->getParsers()));
         }
 
         if ($showOutputs || !($showParsers || $showOutputs)) {
             $output->writeln('Outputs: ' . join(' ',
-                    $this->getContainer()->get('net_tomas_kadlec_d2s.service.output')->supports()));
+                    $this->getContainer()->get('net_tomas_kadlec_d2s.service_application.application')->getOutputs()));
         }
     }
 

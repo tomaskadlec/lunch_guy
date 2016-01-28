@@ -2,6 +2,7 @@
 namespace Net\TomasKadlec\d2sBundle\Command;
 
 use GuzzleHttp\Client;
+use Net\TomasKadlec\d2sBundle\Service\ApplicationInterface;
 use Net\TomasKadlec\d2sBundle\Service\ParserInterface;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -28,34 +29,18 @@ class RunCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        /** @var ParserInterface $parserService */
-        $parserService = $this->getContainer()->get('net_tomas_kadlec_d2s.service.parser');
-        /** @var \Net\TomasKadlec\d2sBundle\Service\OutputInterface $output */
-        $outputService = $this->getContainer()->get('net_tomas_kadlec_d2s.service.output');
-        /** @var Client $client */
-        $client = new Client();
-
-        if (!$this->getContainer()->hasParameter('d2s'))
-            throw new \RuntimeException('Missing configuration: d2s');
-        $config = $this->getContainer()->getParameter('d2s');
+        /** @var ApplicationInterface $application */
+        $application = $this->getContainer()->get('net_tomas_kadlec_d2s.service_application.application');
 
         $outputFormat = $input->getOption('output');
-        if (!$outputService->isSupported($outputFormat))
-            throw new \RuntimeException('Supported output formats: ' . join(', ', $outputService->supports()));
-        if (!isset($config['output'][$outputFormat]))
-            throw new \RuntimeException("Missing configuration: d2s.output.{$outputFormat}.");
-        $outputOptions = $config['output'][$outputFormat];
+        if (!$application->isOutput($outputFormat))
+            throw new \RuntimeException('Supported output formats: ' . join(', ', $application->getOutputs()));
 
         $restaurantIds = $input->getArgument('restaurants');
         foreach ($restaurantIds as $restaurantId) {
-            if (!isset($config['restaurants'][$restaurantId]['parser']) || !isset($config['restaurants'][$restaurantId]['uri']))
-                throw new \RuntimeException("Missing configuration: d2s.restaurants.{$restaurantId}.{uri,parser}.");
-            $restaurantConfig = $config['restaurants'][$restaurantId];
-            if (!$parserService->isSupported($restaurantConfig['parser']))
+            if (!$application->isRestaurant($restaurantId))
                 continue;
-            $response = $client->request('GET', $restaurantConfig['uri']);
-            $menu = $parserService->parse($restaurantConfig['parser'], $response->getBody()->getContents());
-            $outputService->send($outputFormat, $restaurantId, $menu, $outputOptions);
+            $application->output($restaurantId, $outputFormat);
         }
     }
 }

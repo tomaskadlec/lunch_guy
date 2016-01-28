@@ -1,5 +1,12 @@
 services:
 
+  net_tomas_kadlec_d2s.service_application.application:
+    class: Net\TomasKadlec\d2sBundle\Service\Application\Application
+    calls:
+      - [ setConfiguration, [ "%d2s%" ] ]
+      - [ setParser, [ "@net_tomas_kadlec_d2s.service.parser" ] ]
+      - [ setOutput, [ "@net_tomas_kadlec_d2s.service.output" ] ]
+
   net_tomas_kadlec_d2s.service.parser:
     class: Net\TomasKadlec\d2sBundle\Service\Parser
 
