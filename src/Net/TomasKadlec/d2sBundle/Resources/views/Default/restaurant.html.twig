@@ -1,7 +1,7 @@
 <table>
 {% for dishType, dishes in result -%}
     <tr>
-        <th colspan="3">{{ dishType }}</th>
+        <th colspan="3" class="underline">{{ dishType }}</th>
     </tr>
     {% for dish in dishes  -%}
     <tr>
@@ -16,5 +16,7 @@
         <td>{{ dish[1]|default("-") }}&nbsp;Kč</td>
     </tr>
     {% endfor -%}
+{% else -%}
+<tr><th>Menu není k dispozici.</th></tr>
 {% endfor -%}
 </table>
