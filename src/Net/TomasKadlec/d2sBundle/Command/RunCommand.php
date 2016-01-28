@@ -30,7 +30,7 @@ class RunCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         /** @var ApplicationInterface $application */
-        $application = $this->getContainer()->get('net_tomas_kadlec_d2s.service_application.application');
+        $application = $this->getContainer()->get('net_tomas_kadlec_d2s.service.application');
 
         $outputFormat = $input->getOption('output');
         if (!$application->isOutput($outputFormat))

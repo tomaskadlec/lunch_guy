@@ -1,11 +1,20 @@
 services:
 
+  net_tomas_kadlec_d2s.service.application:
+    alias: net_tomas_kadlec_d2s.service_application.cached_application
+
   net_tomas_kadlec_d2s.service_application.application:
     class: Net\TomasKadlec\d2sBundle\Service\Application\Application
     calls:
       - [ setConfiguration, [ "%d2s%" ] ]
       - [ setParser, [ "@net_tomas_kadlec_d2s.service.parser" ] ]
       - [ setOutput, [ "@net_tomas_kadlec_d2s.service.output" ] ]
+
+  net_tomas_kadlec_d2s.service_application.cached_application:
+    class: Net\TomasKadlec\d2sBundle\Service\Application\CachedApplication
+    parent: net_tomas_kadlec_d2s.service_application.application
+    calls:
+      - [ setCache, [ "@net_tomas_kadlec_d2s.service.cache" ] ]
 
   net_tomas_kadlec_d2s.service.parser:
     class: Net\TomasKadlec\d2sBundle\Service\Parser
@@ -37,3 +46,7 @@ services:
     class: Net\TomasKadlec\d2sBundle\Service\Output\StdOut
     tags:
       - { name: net_tomas_kadlec_d2s.service.output }
+
+  net_tomas_kadlec_d2s.service.cache:
+    class: Doctrine\Common\Cache\PhpFileCache
+    arguments: [ "%kernel.cache_dir%", ".restaurants.php" ]

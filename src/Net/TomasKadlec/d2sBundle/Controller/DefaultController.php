@@ -42,7 +42,7 @@ class DefaultController extends Controller
      */
     protected function getApplication()
     {
-        return $this->get('net_tomas_kadlec_d2s.service_application.application');
+        return $this->get('net_tomas_kadlec_d2s.service.application');
     }
 
 }
