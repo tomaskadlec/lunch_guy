@@ -19,6 +19,7 @@
                 background-color: ghostwhite;
                 font-family: Roboto, sans-serif;
             }
+
             .container {
                 width: calc(100vw - 2em);
                 margin: 0.5em 1em;
@@ -33,6 +34,10 @@
                 margin: 0.3em 0.5em;
                 padding: 0.2em 0.5em;
             }
+            .item.full {
+                width: 100%;
+                text-align: center;
+            }
             .item table {
                 width: 100%;
             }
@@ -46,19 +51,38 @@
                 padding: 0 0.25em;
                 margin: auto 0.25em;
             }
+
+            @media (min-width: 768px) and (max-width: 1280px)  {
+                .item {
+                    width: calc(50% - 2*2em);
+                }
+            }
+            @media (max-width: 767px) {
+                .container {
+                    flex-direction: column;
+                }
+                .item {
+                    width: calc(100% - 2em);
+                }
+            }
+
         </style>
     </head>
 
     <body>
         <h1>Obědy v Dejvicích</h1>
-
         <div class="container">
-        {% for restaurantId in restaurants %}
+            <article class="item full">
+                Tento web vznikl pro podporu osobního rozhodování, kam v Dejvicích zamířit na oběd. Informace na tomto webu
+                jsou přejímány z veřejně dostupných zdrojů, typicky webových stránek jednotlivých restaurací. Provozovatel
+                tohoto webu nenese žádnou zodpovědnost za správnost, úplnost ani aktuálnost zobrazených dat.
+            </article>
+            {% for restaurantId in restaurants %}
             <div class="item">
                 <h2>{{ restaurantId }}</h2>
                 <div class="restaurant" data-url="{{ path('net_tomaskadlec_d2s_default_restaurant', { 'restaurantId': restaurantId })  }}">Načítá se ...</div>
             </div>
-        {% endfor %}
+            {% endfor %}
         </div>
     </body>
 </html>
