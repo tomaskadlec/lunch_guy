@@ -28,6 +28,11 @@ body > footer {
     flex-wrap: nowrap;
 }
 
+article.discaimer {
+	font-size: 80%;
+	color: #808080;
+}
+
 a {
     color: #333;
     text-decoration: none;
