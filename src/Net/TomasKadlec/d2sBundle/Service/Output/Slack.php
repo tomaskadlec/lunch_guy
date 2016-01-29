@@ -71,15 +71,15 @@ class Slack implements OutputInterface
     protected function getEmoji($string)
     {
         $emojis = [
-            'pig' => [ 'vepř' ],
-            'cow2' => [ 'hověz', 'telec' ],
-	    'boar' => [ 'divoč' ],
-	    'cake' => [ 'cake', 'koláč' ],
-	    'chicken' => [ 'kuře' ],
-	    'spaghetti' => [ 'špaget' ],
-	    'tomato' => [ 'rajská', 'rajčat' ],
-	    'pear' => [ 'hrušk' ],
-	    'fish' => [ 'pstruh', 'kapr', 'losos' ]
+		'pig' => [ 'vepř' ],
+		'cow2' => [ 'hověz', 'telec' ],
+		'boar' => [ 'divoč' ],
+		'cake' => [ 'cake', 'koláč' ],
+		'chicken' => [ 'kuře' ],
+		'spaghetti' => [ 'špaget' ],
+		'tomato' => [ 'rajská', 'rajčat' ],
+		'pear' => [ 'hrušk' ],
+		'fish' => [ 'pstruh', 'kapr', 'losos' ]
         ];
         $result = [];
         foreach ($emojis as $emoji => $patterns) {
