@@ -1,88 +1,22 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
-        <script>
-            $('document').ready(function () {
-                $('div.restaurant').each(function(index, element) {
-                    var url = $(this).attr('data-url');
-                    $.get(url, function(response) {
-                        element.innerHTML = response;
-                    });
-                })
-            })
-        </script>
-        <style type="text/css">
-            @import url(https://fonts.googleapis.com/css?family=Roboto);
-            
-            body {
-                background-color: ghostwhite;
-                font-family: Roboto, sans-serif;
-            }
+{% extends "::base.html.twig" %}
 
-            .container {
-                width: calc(100vw - 2em);
-                margin: 0.5em 1em;
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-            .item {
-                background-color: white;
-                flex-grow: 1;
-                width: calc(33% - 3*2em);
-                margin: 0.3em 0.5em;
-                padding: 0.2em 0.5em;
-            }
-            .item.full {
-                width: 100%;
-                text-align: center;
-            }
-            .item table {
-                width: 100%;
-            }
-            .item th.underline {
-                border-bottom: 1px solid black;
-            }
-            .item table td span.cafeteria {
-                background-color: #565656;
-                color: #FFFFFF;
-                display: inline-block;
-                padding: 0 0.25em;
-                margin: auto 0.25em;
-            }
+{% block javascripts %}
+{{ parent() }}
+<script src="{{ asset('bundles/nettomaskadlecd2s/js/d2s.js') }}"></script>
+{% endblock %}
 
-            @media (min-width: 768px) and (max-width: 1280px)  {
-                .item {
-                    width: calc(50% - 2*2em);
-                }
-            }
-            @media (max-width: 767px) {
-                .container {
-                    flex-direction: column;
-                }
-                .item {
-                    width: calc(100% - 2em);
-                }
-            }
-
-        </style>
-    </head>
-
-    <body>
-        <h1>Obědy v Dejvicích</h1>
-        <div class="container">
-            <article class="item full">
-                Tento web vznikl pro podporu osobního rozhodování, kam v Dejvicích zamířit na oběd. Informace na tomto webu
-                jsou přejímány z veřejně dostupných zdrojů, typicky webových stránek jednotlivých restaurací. Provozovatel
-                tohoto webu nenese žádnou zodpovědnost za správnost, úplnost ani aktuálnost zobrazených dat.
-            </article>
-            {% for restaurantId in restaurants %}
-            <div class="item">
-                <h2>{{ restaurantId }}</h2>
-                <div class="restaurant" data-url="{{ path('net_tomaskadlec_d2s_default_restaurant', { 'restaurantId': restaurantId })  }}">Načítá se ...</div>
-            </div>
-            {% endfor %}
-        </div>
-    </body>
-</html>
+{% block body %}
+<div class="container">
+    <article class="item full">
+        Tento web vznikl pro podporu osobního rozhodování, kam v Dejvicích zamířit na oběd. Informace na tomto webu
+        jsou přejímány z veřejně dostupných zdrojů, typicky webových stránek jednotlivých restaurací. Provozovatel
+        tohoto webu nenese žádnou zodpovědnost za správnost, úplnost ani aktuálnost zobrazených dat.
+    </article>
+    {% for restaurantId in restaurants %}
+    <div class="item">
+        <h2>{{ restaurantId }}</h2>
+        <div class="restaurant" data-url="{{ path('net_tomaskadlec_d2s_default_restaurant', { 'restaurantId': restaurantId })  }}">Načítá se ...</div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -18,6 +18,8 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
 
+    app_name: 'Obědář'
+    analytics: ~
     d2s:
         restaurants:
             'U Pětníka':
