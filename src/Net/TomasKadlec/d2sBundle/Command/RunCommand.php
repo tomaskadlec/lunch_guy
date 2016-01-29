@@ -23,7 +23,8 @@ class RunCommand extends ContainerAwareCommand
         $this
             ->setName('d2s:run')
             ->setDescription('Return menus ...')
-            ->addOption('output', 'o', InputOption::VALUE_REQUIRED, 'Choose output', 'stdout')
+            ->addOption('output', 'o', InputOption::VALUE_REQUIRED, 'Select an application output', 'stdout')
+            ->addOption('slack-channel', 's', InputOption::VALUE_REQUIRED, 'Select a channel when ')
             ->addArgument('restaurants', InputArgument::IS_ARRAY | InputArgument::REQUIRED, 'Restaurant(s) to process', []);
     }
 
@@ -36,11 +37,20 @@ class RunCommand extends ContainerAwareCommand
         if (!$application->isOutput($outputFormat))
             throw new \RuntimeException('Supported output formats: ' . join(', ', $application->getOutputs()));
 
+        // output options (prefixed with $outputFormat)
+        $options = [];
+        foreach($input->getOptions() as $option => $value) {
+            if (preg_match("/^{$outputFormat}-/", $option)) {
+                $option = preg_replace("/^{$outputFormat}-/", '', $option);
+                $options[$option] = $value;
+            }
+        }
+
         $restaurantIds = $input->getArgument('restaurants');
         foreach ($restaurantIds as $restaurantId) {
             if (!$application->isRestaurant($restaurantId))
                 continue;
-            $application->output($restaurantId, $outputFormat);
+            $application->output($restaurantId, $outputFormat, $options);
         }
     }
 }

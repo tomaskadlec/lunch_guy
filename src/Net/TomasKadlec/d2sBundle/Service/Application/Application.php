@@ -116,14 +116,12 @@ class Application implements ApplicationInterface
     }
 
     /**
-     * Outputs menu of restaurantId to output.
-     *
-     * @param string $restaurantId
-     * @param string $output
+     * @inheritdoc
      */
-    public function output($restaurantId, $output) {
+    public function output($restaurantId, $output, array $options = []) {
         $menu = $this->retrieve($restaurantId);
-        $this->output->send($output, $restaurantId, $menu, $this->configOutput($output));
+        $mergedOptions = array_merge($this->configOutput($output), $options);
+        $this->output->send($output, $restaurantId, $menu, $mergedOptions);
     }
 
     /**

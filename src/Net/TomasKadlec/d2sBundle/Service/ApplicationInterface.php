@@ -68,12 +68,13 @@ interface ApplicationInterface
     public function retrieve($restaurantId);
 
     /**
-     * Outputs menu of restaurantId to output.
+     * Outputs menu of restaurantId
      *
      * @param string $restaurantId
      * @param string $output
+     * @param array $options options to override ones read from configuration
      */
-    public function output($restaurantId, $output);
+    public function output($restaurantId, $output, array $options = []);
 
     /**
      * @param mixed $configuration
