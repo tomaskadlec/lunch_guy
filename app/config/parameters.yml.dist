@@ -34,6 +34,9 @@ parameters:
             'U Topolů':
                 'uri': 'http://www.utopolu.cz/ajax/cs/menu/getmenu/0'
                 'parser': 'utopolu'
+            'U Profesora':
+                'uri': 'http://uprofesora.cz/'
+                'parser': 'uprofesora'
             'Studentský dům':
                 'uri': 'http://agata.suz.cvut.cz/jidelnicky/index.php?clPodsystem=2'
                 'parser': 'suz'
