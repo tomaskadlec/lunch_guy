@@ -3,6 +3,9 @@
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
+date_default_timezone_set('UTC');
+
+
 class AppKernel extends Kernel
 {
     public function registerBundles()
