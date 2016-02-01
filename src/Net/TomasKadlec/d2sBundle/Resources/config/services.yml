@@ -29,6 +29,21 @@ services:
     tags:
       - { name: net_tomas_kadlec_d2s.service.parser }
 
+  net_tomas_kadlec_d2s.service_parser.uprofesora:
+    class: Net\TomasKadlec\d2sBundle\Service\Parser\UProfesora
+    tags:
+      - { name: net_tomas_kadlec_d2s.service.parser }
+
+  net_tomas_kadlec_d2s.service_parser.simigastro:
+    class: Net\TomasKadlec\d2sBundle\Service\Parser\SimiGastro
+    tags:
+      - { name: net_tomas_kadlec_d2s.service.parser }
+
+  net_tomas_kadlec_d2s.service_parser.santinka:
+    class: Net\TomasKadlec\d2sBundle\Service\Parser\Santinka
+    tags:
+      - { name: net_tomas_kadlec_d2s.service.parser }
+
   net_tomas_kadlec_d2s.service_parser.suz:
     class: Net\TomasKadlec\d2sBundle\Service\Parser\SUZ
     tags:

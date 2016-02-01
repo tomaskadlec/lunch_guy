@@ -120,8 +120,12 @@ class Application implements ApplicationInterface
      */
     public function output($restaurantId, $output, array $options = []) {
         $menu = $this->retrieve($restaurantId);
-        $mergedOptions = array_merge($this->configOutput($output), $options);
-        $this->output->send($output, $restaurantId, $menu, $mergedOptions);
+        $this->output->send($output, $restaurantId, $menu,
+            array_merge(
+                (is_array($this->configOutput($output)) ? $this->configOutput($output) : []),
+                $options
+            )
+        );
     }
 
     /**
