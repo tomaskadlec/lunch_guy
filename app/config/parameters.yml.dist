@@ -40,6 +40,9 @@ parameters:
             'Cesta časem':
                 'uri': 'http://www.cestacasem.cz/denni-nabidka/'
                 'parser': 'simigastro'
+            'Bistro Santinka':
+                'uri': 'http://www.santinka.cz/'
+                'parser': 'santinka'
             'Studentský dům':
                 'uri': 'http://agata.suz.cvut.cz/jidelnicky/index.php?clPodsystem=2'
                 'parser': 'suz'
