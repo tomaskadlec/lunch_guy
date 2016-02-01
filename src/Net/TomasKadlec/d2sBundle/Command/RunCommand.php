@@ -25,7 +25,8 @@ class RunCommand extends ContainerAwareCommand
             ->setDescription('Return menus ...')
             ->addOption('output', 'o', InputOption::VALUE_REQUIRED, 'Select an application output', 'stdout')
             ->addOption('slack-channel', 's', InputOption::VALUE_REQUIRED, 'Select a channel when ')
-            ->addArgument('restaurants', InputArgument::IS_ARRAY | InputArgument::REQUIRED, 'Restaurant(s) to process', []);
+            ->addOption('all', 'a', InputOption::VALUE_NONE, 'Run on all configured restaurants')
+            ->addArgument('restaurants', InputArgument::IS_ARRAY, 'Restaurant(s) to process', []);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -46,7 +47,14 @@ class RunCommand extends ContainerAwareCommand
             }
         }
 
-        $restaurantIds = $input->getArgument('restaurants');
+        if ($input->getOption('all')) {
+            $restaurantIds  = $application->getRestaurants();
+        } else {
+            $restaurantIds = $input->getArgument('restaurants');
+            if (empty($restaurantIds))
+                throw new \RuntimeException('Provide one restaurant ID at least or use --all option');
+        }
+
         foreach ($restaurantIds as $restaurantId) {
             if (!$application->isRestaurant($restaurantId))
                 continue;
