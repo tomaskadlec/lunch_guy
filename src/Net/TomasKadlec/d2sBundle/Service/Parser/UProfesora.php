@@ -13,7 +13,9 @@ class UProfesora extends AbstractParser
     protected $filter = [
     ];
 
-    protected static $selector = 'div#about div.tab-content div#sectionA table tr';
+    protected static $selector = 'div#about div.tab-content div#sectionA table.menulist tr';
+
+    protected static $selectorDate = 'div#about div.tab-content div#sectionA table.menulist';
 
     public function isSupported($format)
     {
@@ -23,6 +25,31 @@ class UProfesora extends AbstractParser
     public function supports()
     {
         return [ 'uprofesora' ];
+    }
+
+
+    public function parse($format, $data, $charset = 'UTF-8')
+    {
+        if (!$this->isSupported($format))
+            return new \RuntimeException("Format {$format} is not supported.");
+        $date = $this
+            ->getCrawler($data, $charset)
+            ->filter(static::$selectorDate)
+            ->first()
+            ->attr('id');
+        $today = true;
+        if (!empty($date) && is_string($date)) {
+            $date = preg_replace('/^[^.0-9[:space:]]+[[:space:]]+/', '', $date);
+            $date = \DateTime::createFromFormat('j.n.Y', $date);
+            if ($date !== false && ((new \DateTime('today'))->getTimestamp() - $date->getTimestamp()) > (24 * 60 * 60))
+                $today = false;
+        }
+
+        if ($today) {
+            return parent::parse($format, $data, $charset);
+        } else {
+            return [];
+        }
     }
 
     /**
