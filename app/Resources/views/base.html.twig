@@ -17,22 +17,80 @@
         <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
         {% endblock %}
         {% block stylesheets %}
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700italic,700,800,800italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="{{ asset('bundles/nettomaskadlecd2s/css/screen.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('bundles/nettomaskadlecd2s/css/base.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('bundles/nettomaskadlecd2s/css/application.css') }}"/>
         {% endblock %}
         <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAMAAAC8EZcfAAAAV1BMVEX///9EREAyPk9AQ0I2QUosN0YwPU0zPk0xP04sNkUtOEZDQz8yPk5EREBDQ0BDQ0AxPk0wPUwxPU0sNkVEREAyPk8yP08zPk40Pk4zPk80P04zP04zP0+GfNacAAAAFXRSTlMACv0iYGzR99FkjQL9Dg4C5WrXbgx3lBdmAAABfklEQVQYle3cyU4DMRRE0TDP8wz9/9/JriqL0sOhA3qW7l2avPYxGysSzWZTdqAO1aK+lNc+ldc+VL1HbQEIECBAgPMAj9QSGmXVE8fqF783gAABAgTYEvgfrDRxogACBAgQ4IxAf2WpNzlVZ8qfO1eeuFBmXaq0h1VXCiBAgAABdgdeqzTitRvlx/inac0T6XNpj3e1ddUBBAgQIMDmwJr1pjYhT3jN19roQdIXKYAAAQIEOA8wsTzyqhLQE6PXWjrIEgIIECBAgPMAE8trNdAT6XmjB3HpIAABAgQIsDswseqR+lpL3aqETpftnQIIECBAgN2BNctr9bXmiXvlgzyo3fcACBAgQIDdgS+qHvGaZ9ccZHQPgAABAgTYHZgek0bS8H4O8gMLIECAAAFOA/Rr8YnlTTyxn4M8KoAAAQIEOCMw/VuuJzV6SaWDrGHFdzsBAgQIEGBL4Gh+rXENq97jWQ2zAAIECBBgc+DuV87Wn4X92R4AAQIECLAR8BuC82ODdgy5vAAAAABJRU5ErkJggg==" rel="icon" type="image/x-icon" />
     </head>
     <body>
+        <!--[if lte IE 9]>
+        <div class="ielte7" style="background: yellow; margin: 0; border: 0.3em solid red;">
+            <dl>
+                <dt>Používáte zastaralou verzi prohlížeče!</dt>
+                <dd><a href="http://windows.microsoft.com/cs-cz/internet-explorer/download-ie">Aktualizujte</a> na vyšší verzi,</dd>
+                <dd>nainstalujte <a href="https://www.google.com/chrome">alternativní prohlížeč</a> nebo</dd>
+                <dd>kontaktujte správce svého počítače.</dd>
+            </dl>
+        </div>
+        <![endif]]]-->
+        {% block breadcrumbs %}
+        <nav class="breadcrumbs">
+            {# https://gist.github.com/fsevestre/b378606c4fd23814278a #}
+            {{ knp_menu_render('main', {'template': '::breadcrumbs.html.twig'}) }}
+        </nav>
+        {% endblock %}
         {% block header %}
         <header>
-            <h1>Obědy v Dejvicích</h1>
+            {% set current_menu_item = knp_menu_get_current_item('main') %}
+            <h1>{{ current_menu_item.attribute('title', current_menu_item.label) }}</h1>
         </header>
         {% endblock %}
         {% block body %}{% endblock %}
         {% block footer %}
         <footer>
-            <a href="https://github.com/tomaskadlec/d2s" class="right"><i style="font-size: 2em" class="fa fa-github"></i></a>
+            {#<a href="https://github.com/tomaskadlec/d2s" class="right"></a>#}
+            <div class="container">
+                <nav>
+                    {{ knp_menu_render('main')  }}
+                </nav>
+                <nav>
+                    {{ knp_menu_render('external', {'template': '::external.html.twig'}) }}
+                </nav>
+            </div>
         </footer>
         {% endblock %}
     </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -30,7 +30,8 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "guzzlehttp/guzzle": "^6.1",
         "symfony/css-selector": "^3.0",
-        "doctrine/cache": "^1.6"
+        "doctrine/cache": "^1.6",
+        "knplabs/knp-menu-bundle": "^2."
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

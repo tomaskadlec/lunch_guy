@@ -1,0 +1,20 @@
+{##
+ # app/Resources/views/external.html.twig
+ #
+ # A template used to display external links. It is used in the page
+ # footer typically.
+-#}
+<ul>
+{% for node in item %}
+    <li>
+        <a href="{{ node.uri }}">
+            {%- if node.attribute('icon') -%}
+                <i style="font-size: 2em" class="fa {{ node.attribute('icon') }}"></i>
+            {%- endif -%}
+            {%- if not node.attribute('no_label') == true -%}
+                {{ node.label }}
+            {%- endif -%}
+        </a>
+    </li>
+{% endfor %}
+</ul>
