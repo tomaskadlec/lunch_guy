@@ -3,11 +3,6 @@
     padding: 0;
 }
 
-/*body {*/
-    /*min-width: 74em;*/
-    /*min-width: 74rem;*/
-/*}*/
-
 body, input, button {
     font-family: 'Open Sans', Tahoma, sans-serif;
     letter-spacing: 0.01em;
