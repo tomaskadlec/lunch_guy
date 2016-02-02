@@ -1,0 +1,31 @@
+body {
+    font-size: 26px;
+}
+
+h1, h2, h3, table {
+  text-rendering: optimizeLegibility;
+}
+
+.container {
+    flex-direction: column;
+}
+
+.item {
+    width: 100%;
+}
+
+body > footer > div.container {
+    flex-direction: column;
+}
+
+body > footer > div.container > nav {
+    margin: auto;
+}
+
+body > footer > div.container > nav > ul > li {
+    text-align: center;
+}
+
+body > footer > div.container > nav > ul {
+    text-align: center;
+}
