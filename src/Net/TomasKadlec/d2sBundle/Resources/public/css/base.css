@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*body {*/
+    /*min-width: 74em;*/
+    /*min-width: 74rem;*/
+/*}*/
+
+body, input, button {
+    font-family: 'Open Sans', Tahoma, sans-serif;
+    letter-spacing: 0.01em;
+}
+
+strong {
+    font-weight: 600;
+}
+
+object {
+    max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, dl, table, article, div.container {
+    margin: 0.5em auto 0.25em auto;
+    max-width: 72em;
+    max-width: 72rem;
+    box-sizing: border-box;
+}
+
+div.list.multiple div {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+div.list.multiple dl {
+    margin: 1em;
+    padding: 0.5em 1em;
+}
+
+div.paragraph > p,
+div.paragraph > ul,
+div.paragraph > ol,
+div.paragraph > dl {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+ul ul, ul ol, ul dl,
+ol ul, ol ol, ol dl,
+dl ul, dl ol, dl dl {
+    margin: 0.5em 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+li li {
+    margin-left: 1em;
+    margin-left: 1rem;
+}
+
+div.list > ul,
+div.list > ol,
+div.list > dl {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+div.list > ul > *:first-child,
+div.list > ol > *:first-child,
+div.list > dl > *:first-child {
+    margin-top: 0;
+}
+
+button, input[type="submit"] {
+    cursor: pointer;
+}
+
+button[disabled] {
+    cursor: inherit;
+    opacity: 0.6;
+    color: inherit;
+}
+
+li, dd, dt {
+    margin-top: 0.5em;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5em;
+    margin-bottom: 0.5rem;
+}
+
+li, dd {
+    margin-left: 2em;
+}
+
+div.section > pre {
+    margin: 1em auto;
+    margin: 1rem auto;
+    padding: 1em;
+    padding: 1rem;
+}

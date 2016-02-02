@@ -65,3 +65,20 @@ services:
   net_tomas_kadlec_d2s.service.cache:
     class: Doctrine\Common\Cache\PhpFileCache
     arguments: [ "%kernel.cache_dir%", ".restaurants.php" ]
+
+  net_tomas_kadlec_d2s.menu.builder:
+    class: Net\TomasKadlec\d2sBundle\Menu\Builder
+    calls:
+      - [ setFactory, [ "@knp_menu.factory" ]]
+      - [ setApplication, [ "@net_tomas_kadlec_d2s.service.application" ] ]
+    tags:
+      - { name: knp_menu.menu_builder, method: getMain, alias: main }
+      - { name: knp_menu.menu_builder, method: getExternal, alias: external }
+
+  net_tomas_kadlec_d2s.twig.menu_extension:
+    class: Net\TomasKadlec\d2sBundle\Twig\MenuExtension
+    arguments:
+      - "@knp_menu.helper"
+      - "@knp_menu.matcher"
+    tags:
+      - { name: twig.extension }

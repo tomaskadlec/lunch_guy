@@ -14,7 +14,7 @@ class DefaultController extends Controller
 {
 
     /**
-     * @Route("/{restaurantId}", methods={"GET"})
+     * @Route("/restaurants/{restaurantId}", methods={"GET"})
      * @Template()
      * @param $restaurant
      */
@@ -27,6 +27,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("/", methods={"GET"})
+     * @Route("/restaurants", methods={"GET"})
      * @Template()
      * @return array
      */

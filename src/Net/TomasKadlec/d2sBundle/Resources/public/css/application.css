@@ -1,0 +1,140 @@
+/*** COMMON MARKUP ***/
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #111;
+    text-decoration: underline;
+}
+
+body > nav.breadcrumbs a,
+body > footer a {
+    color: #D4D4D4;
+    text-decoration: underline;
+}
+
+body > nav.breadcrumbs a:hover,
+body > footer a:hover {
+    color: #F4F4F4;
+}
+
+/*** BREADCRUMBS ***/
+
+body > nav.breadcrumbs {
+    margin: 0;
+    color: #D4D4D4;
+    background: #2E3234;
+}
+
+body > nav.breadcrumbs > ul {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+}
+
+body > nav.breadcrumbs > ul > li {
+    display: inline-block;
+    margin-left: 0;
+}
+
+body > nav.breadcrumbs > ul > li:first-child {
+    margin-left: 0;
+}
+
+body > nav.breadcrumbs > ul > li:not(:first-child)::before {
+    content: "›";
+    line-height: 1rem;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    font-size: 2em;
+    vertical-align: -0.05em;
+    font-weight: 300;
+    color: rgb(100, 100, 100);
+}
+
+/*** TITLE ***/
+
+body > header {
+    color: #FFFFFF;
+    background-color: #2B74A7;
+}
+
+body > header > h1 {
+    padding-top: 0.5em;
+    padding-bottom: 0.25em;
+    margin-top: 0;
+}
+
+/*** FOOTER***/
+
+body > footer {
+    color: #D4D4D4;
+    background: #2E3234;
+}
+
+body > footer > div.container > nav {
+    display: inline-block;
+    width: 50%;
+}
+
+body > footer > div.container > nav > ul {
+    list-style: none;
+}
+
+body > footer > div.container > nav > ul > li {
+    margin-left: 0;
+}
+
+body > footer > div.container > nav:not(:first-child) {
+    text-align: right;
+}
+body > footer > div.container > nav:not(:first-child) > ul > li {
+    display: inline-block;
+    margin: 0 0.25em;
+}
+
+/*** CONTENT ***/
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.item {
+    flex-grow: 1;
+    width: calc(50% - 3*2em);
+    margin: 0.3em 0.5em;
+    padding: 0.2em 0.5em;
+}
+
+.item table {
+    width: 100%;
+}
+.item th.underline {
+    border-bottom: 1px solid black;
+}
+.item table td span.cafeteria {
+    background-color: #565656;
+    color: #FFFFFF;
+    display: inline-block;
+    padding: 0 0.25em;
+    margin: auto 0.25em;
+}
+
+@media (min-width: 768px) and (max-width: 1280px)  {
+    .item {
+        width: calc(50% - 2*2em);
+    }
+}
+@media (max-width: 767px) {
+    .container {
+        flex-direction: column;
+    }
+    .item {
+        width: calc(100% - 2em);
+    }
+}
