@@ -18,6 +18,8 @@ class DRest extends AbstractParser
         'Na stravenky',
         'Děkujeme Vám',
         'Navštivte naše',
+        'drest.cz',
+        'Nové stránky',
     ];
 
     protected static $selector = 'table.es_resto_menu tr';
