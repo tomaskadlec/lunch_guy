@@ -82,7 +82,8 @@ bin/console d2s:run  'U Topolů' 'U Pětníka' 'Na Slamníku'
 
 ## Contributing
 
-Fork the project and then make pull request to [``develop``](https://github.com/tomaskadlec/d2s/tree/develop) branch. 
+Fork the project and then make pull request to [``develop``](https://github.com/tomaskadlec/d2s/tree/develop) branch.
+Or in case of bugfixes against the [``release``](https://github.com/tomaskadlec/d2s/releases) that should be fixed.
 
 ## Extending the application
 
