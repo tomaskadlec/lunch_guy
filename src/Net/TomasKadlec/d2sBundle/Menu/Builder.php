@@ -66,6 +66,11 @@ class Builder
         }
 
         $menu
+            ->addChild('O aplikaci', [
+                'route' => 'net_tomaskadlec_d2s_about_index'
+            ]);
+
+        $menu
             ->addChild('Podmínky služby', [
                 'route' => 'net_tomaskadlec_d2s_terms_index'
             ]);
