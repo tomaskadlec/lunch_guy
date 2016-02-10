@@ -76,6 +76,11 @@ class Builder
             ]);
 
         $menu
+            ->addChild('Jak přispět?', [
+                'route' => 'net_tomaskadlec_d2s_about_contribute'
+            ]);
+
+        $menu
             ->addChild('Podmínky služby', [
                 'route' => 'net_tomaskadlec_d2s_terms_index'
             ]);
