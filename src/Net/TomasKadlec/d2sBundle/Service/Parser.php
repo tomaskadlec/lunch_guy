@@ -53,7 +53,7 @@ class Parser implements ParserInterface
     public function parse($format, $data, $charset = 'UTF-8')
     {
         if (!$this->isSupported($format))
-            return new \RuntimeException("Format $ format is not supported.");
+            return new \RuntimeException("Format $format is not supported.");
         return $this->parsers[$format]->parse($format, $data, $charset);
     }
 
