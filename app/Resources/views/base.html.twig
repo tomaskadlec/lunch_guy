@@ -64,6 +64,9 @@
                 </nav>
                 <nav>
                     {{ knp_menu_render('external', {'template': '::external.html.twig'}) }}
+                    {% if app_info.version %}
+                        Verze: {{ app_info.version }}
+                    {% endif %}
                 </nav>
             </div>
         </footer>

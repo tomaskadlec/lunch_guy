@@ -86,3 +86,7 @@ services:
   net_tomas_kadlec_d2s.service.contributors:
     class: Net\TomasKadlec\d2sBundle\Service\Contributors
     arguments: [ "%kernel.cache_dir%", "%d2s%" ]
+
+  net_tomas_kadlec_d2s.service.application_info_service:
+    class: Net\TomasKadlec\d2sBundle\Service\ApplicationInfoService
+    arguments: [ "%kernel.root_dir%" ]

@@ -41,6 +41,7 @@ twig:
     globals:
         app_name:     "%app_name%"
         analytics:    "%analytics%"
+        app_info:     "@net_tomas_kadlec_d2s.service.application_info_service"
 
 # Doctrine Configuration
 doctrine:
