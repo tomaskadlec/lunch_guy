@@ -66,6 +66,16 @@ class Builder
         }
 
         $menu
+            ->addChild('O aplikaci', [
+                'route' => 'net_tomaskadlec_d2s_about_index'
+            ]);
+
+        $menu
+            ->addChild('Přispěvatelé', [
+                'route' => 'net_tomaskadlec_d2s_about_contributors'
+            ]);
+
+        $menu
             ->addChild('Podmínky služby', [
                 'route' => 'net_tomaskadlec_d2s_terms_index'
             ]);
@@ -91,8 +101,8 @@ class Builder
                 ],
             ]);
         $menu
-            ->addChild('Twitter', [
-                'uri' => 'https://ictfit.slack.com/messages/general/',
+            ->addChild('Slack', [
+                'uri' => 'https://ictfit.slack.com/messages/obed/',
                 'attributes' => [
                     'icon' => 'fa-slack',
                     'no_label' => true,

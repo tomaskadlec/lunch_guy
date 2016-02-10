@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kadleto2
- * Date: 1.2.16
- * Time: 18:42
- */
 
 namespace Net\TomasKadlec\d2sBundle\Controller;
 

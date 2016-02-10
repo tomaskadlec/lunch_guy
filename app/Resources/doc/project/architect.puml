@@ -1,0 +1,85 @@
+@startuml
+hide footbox
+title Jak to vidí architekt
+
+actor User
+actor Manager
+
+Manager -> GitHub : přijetí PR\ndo větve master
+GitHub -> Gitlab : notifikace nové verze\n(webhook)
+
+== Sestavení ==
+
+Gitlab -> GitlabCI : spuštění úkolu
+
+GitlabCI -> runner : ssh runner
+activate runner
+
+runner -> runner : ansible-playbook\n-t build
+activate runner
+
+runner -> runner : sestavení aplikace\n(composer)
+activate runner
+deactivate runner
+
+runner -> runner : vytvoření Docker\nimage (docker build,\ndocker commit)
+activate runner
+deactivate runner
+
+runner -> runner : nahrání Docker\nimage (docker push)
+activate runner
+deactivate runner
+
+runner --> GitlabCI : aplikace sestavena\nnebo chyba
+deactivate runner
+deactivate runner
+
+GitlabCI --> Gitlab : výsledek
+
+== Nasazení (bezchybné sestavení) ==
+
+GitlabCI -> runner : ssh runner
+activate runner
+
+runner -> runner : ansible-playbook\n-t deploy
+activate runner
+
+runner -> host : ceph mount
+activate host
+host --> runner
+deactivate host
+
+runner -> host : konfigurace
+activate host
+host --> runner
+deactivate host
+
+runner -> host : docker pull
+activate host
+host --> runner
+deactivate host
+
+runner -> host : docker stop
+activate host
+host --> runner
+deactivate host
+
+runner -> host : docker start
+activate host
+host --> runner
+deactivate host
+deactivate runner
+
+runner --> GitlabCI : výsledek
+deactivate runner
+
+GitlabCI --> Gitlab : výsledek
+
+== Provoz ==
+
+User -> host : GET /obedar
+activate host
+host --> User : '200 OK HTTP/1.1 ...'
+deactivate host
+
+@enduml
