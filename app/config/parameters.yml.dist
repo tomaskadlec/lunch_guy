@@ -21,6 +21,9 @@ parameters:
     app_name: 'Obědář'
     analytics: ~
     d2s:
+        contributors:
+            user: tomaskadlec
+            repository: d2s
         restaurants:
             'U Pětníka':
                 'uri': 'http://www.drest.cz/u-petnika'

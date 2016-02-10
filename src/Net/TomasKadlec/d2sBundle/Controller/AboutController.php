@@ -18,6 +18,15 @@ class AboutController extends Controller
     }
 
     /**
+     * @Route("/contribute", methods={"GET"})
+     * @Template()
+     */
+    public function contributeAction()
+    {
+        return [];
+    }
+
+    /**
      * @Route("/contributors", methods={"GET"})
      * @Template()
      */
