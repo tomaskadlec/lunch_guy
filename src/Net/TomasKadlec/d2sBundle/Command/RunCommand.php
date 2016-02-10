@@ -24,7 +24,7 @@ class RunCommand extends ContainerAwareCommand
             ->setName('d2s:run')
             ->setDescription('Return menus ...')
             ->addOption('output', 'o', InputOption::VALUE_REQUIRED, 'Select an application output', 'stdout')
-            ->addOption('slack-channel', 's', InputOption::VALUE_REQUIRED, 'Select a channel when ')
+            ->addOption('slack-channel', 's', InputOption::VALUE_REQUIRED, 'Select a channel', null)
             ->addOption('all', 'a', InputOption::VALUE_NONE, 'Run on all configured restaurants')
             ->addArgument('restaurants', InputArgument::IS_ARRAY, 'Restaurant(s) to process', []);
     }
@@ -43,7 +43,8 @@ class RunCommand extends ContainerAwareCommand
         foreach($input->getOptions() as $option => $value) {
             if (preg_match("/^{$outputFormat}-/", $option)) {
                 $option = preg_replace("/^{$outputFormat}-/", '', $option);
-                $options[$option] = $value;
+                if (!empty($value))
+                    $options[$option] = $value;
             }
         }
 
