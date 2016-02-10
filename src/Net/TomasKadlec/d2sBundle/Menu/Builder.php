@@ -101,8 +101,8 @@ class Builder
                 ],
             ]);
         $menu
-            ->addChild('Twitter', [
-                'uri' => 'https://ictfit.slack.com/messages/general/',
+            ->addChild('Slack', [
+                'uri' => 'https://ictfit.slack.com/messages/obed/',
                 'attributes' => [
                     'icon' => 'fa-slack',
                     'no_label' => true,
