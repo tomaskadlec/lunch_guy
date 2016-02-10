@@ -56,7 +56,7 @@ parameters:
                 'uri': 'http://agata.suz.cvut.cz/jidelnicky/index.php?clPodsystem=5'
                 'parser': 'suz'
         output:
-            stdout: yes
+            stdout: []
             slack:
                 uri: ~
                 channel: "#general"
