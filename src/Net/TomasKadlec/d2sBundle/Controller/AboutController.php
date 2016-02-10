@@ -16,5 +16,23 @@ class AboutController extends Controller
     {
         return [];
     }
-        
+
+    /**
+     * @Route("/contributors", methods={"GET"})
+     * @Template()
+     */
+    public function contributorsAction()
+    {
+        try {
+            $data = $this
+                ->get('net_tomas_kadlec_d2s.service.contributors')
+                ->getContributors();
+            return [
+                'contributors' => $data['contributors'],
+            ];
+        } catch (\RuntimeException $e) {
+            return [];
+        }
+    }
+
 }

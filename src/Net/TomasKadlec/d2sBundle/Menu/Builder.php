@@ -71,6 +71,11 @@ class Builder
             ]);
 
         $menu
+            ->addChild('Přispěvatelé', [
+                'route' => 'net_tomaskadlec_d2s_about_contributors'
+            ]);
+
+        $menu
             ->addChild('Podmínky služby', [
                 'route' => 'net_tomaskadlec_d2s_terms_index'
             ]);
