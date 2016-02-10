@@ -85,6 +85,8 @@ bin/console d2s:run  'U Topolů' 'U Pětníka' 'Na Slamníku'
 Fork the project and then make pull request to [``develop``](https://github.com/tomaskadlec/d2s/tree/develop) branch.
 Or in case of bugfixes against the [``release``](https://github.com/tomaskadlec/d2s/releases) that should be fixed.
 
+Testing server running in a container can be used to verify your code without hassle. You just need to run `docker-compose up` and wait for the server to start listening at http://127.0.0.1:8000. Happy coding!
+
 ## Extending the application
 
 ### Writing custom parsers
