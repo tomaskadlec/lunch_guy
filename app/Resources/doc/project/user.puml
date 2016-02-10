@@ -1,0 +1,7 @@
+@startuml
+hide footbox
+title Jak to vidí uživatel
+actor User
+User -> Application : GET /obedar
+Application --> User : 'U Pětníka, ...'
+@enduml

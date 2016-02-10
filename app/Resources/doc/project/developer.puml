@@ -1,0 +1,31 @@
+@startuml
+hide footbox
+title Jak to vidí vývojář
+actor Developer
+actor Manager
+
+== Chci se zapojit ==
+
+Developer -> GitHub : budu řešit #NN
+GitHub --> Developer : Developer jako řešitel
+
+== Získání projektu ==
+
+Developer -> GitHub : git clone tomaskadlec/d2s
+
+Developer -> git : git checkout develop
+Developer -> git : git checkout -b \#NN
+
+== Opakuje se ==
+
+Developer -> git : git commit -m ...
+
+== Uzavření (může se opakovat)  ==
+
+Developer -> git : git push origin \#NN
+Developer -> GitHub : vytvořit PR proti develop větvi
+
+GitHub -> Manager : notifikace nového PR
+Manager -> GitHub : přijetí/zamítnutí PR
+
+@enduml
