@@ -46,6 +46,9 @@ parameters:
             'Bistro Santinka':
                 'uri': 'http://www.santinka.cz/'
                 'parser': 'santinka'
+            'Pod Juliskou':
+                'uri': 'http://www.podjuliskou.cz/menu/'
+                'parser': 'podjuliskou'
             'Studentský dům':
                 'uri': 'http://agata.suz.cvut.cz/jidelnicky/index.php?clPodsystem=2'
                 'parser': 'suz'

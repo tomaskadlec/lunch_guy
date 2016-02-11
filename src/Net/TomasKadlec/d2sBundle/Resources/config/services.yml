@@ -49,6 +49,11 @@ services:
     tags:
       - { name: net_tomas_kadlec_d2s.service.parser }
 
+  net_tomas_kadlec_d2s.service_parser.pod_juliskou:
+    class: Net\TomasKadlec\d2sBundle\Service\Parser\PodJuliskou
+    tags:
+      - { name: net_tomas_kadlec_d2s.service.parser }
+
   net_tomas_kadlec_d2s.service.output:
     class: Net\TomasKadlec\d2sBundle\Service\Output
 
