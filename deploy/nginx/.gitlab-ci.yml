@@ -1,0 +1,22 @@
+build_image:
+  stage: build
+  script: make build
+  tags:
+    - docker
+
+push_image:
+  stage: push
+  script: make push
+  tags:
+    - docker
+
+clean_image:
+  stage: clean
+  script: make clean
+  tags:
+    - docker
+
+stages:
+  - build
+  - push
+  - clean

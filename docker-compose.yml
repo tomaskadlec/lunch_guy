@@ -4,9 +4,9 @@ app:
     - 127.0.0.1:9000:9000
 
 nginx:
+  build: deploy/nginx
   links:
     - app
-  image: registry.in.fit.cvut.cz:443/ict/nginx-symfony
   ports:
     - 127.0.0.1:80:80
   volumes_from:
