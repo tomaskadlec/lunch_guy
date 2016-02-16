@@ -49,6 +49,9 @@ parameters:
             'Pod Juliskou':
                 'uri': 'http://www.podjuliskou.cz/menu/'
                 'parser': 'podjuliskou'
+            'Pod Loubím':
+                'uri': 'http://www.podloubim.com/menu/'
+                'parser': 'podloubim'
             'Studentský dům':
                 'uri': 'http://agata.suz.cvut.cz/jidelnicky/index.php?clPodsystem=2'
                 'parser': 'suz'
