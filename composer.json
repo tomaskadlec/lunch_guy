@@ -32,7 +32,8 @@
         "symfony/css-selector": "^3.0",
         "doctrine/cache": "^1.6",
         "knplabs/knp-menu-bundle": "^2.",
-        "knplabs/github-api": "~1.4"
+        "knplabs/github-api": "~1.4",
+        "oneup/flysystem-bundle": "@stable"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
