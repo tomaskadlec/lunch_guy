@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Oneup\FlysystemBundle\OneupFlysystemBundle(),
             new Net\TomasKadlec\d2sBundle\NetTomasKadlecd2sBundle(),
+            new Net\TomasKadlec\d2s\UiBundle\NetTomasKadlecd2sUiBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
