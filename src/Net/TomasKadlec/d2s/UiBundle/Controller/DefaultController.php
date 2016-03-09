@@ -15,7 +15,11 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $application = $this->get('net_tomas_kadlec_d2s.service_application.application');
-
-        return [];
+        return [
+            'restaurants' => [
+                'Na Urale' => $application->retrieve('Na Urale'),
+                'U Pětníka' => $application->retrieve('U Pětníka'),
+            ]
+        ];
     }
 }
