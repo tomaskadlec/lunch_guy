@@ -1,0 +1,4 @@
+services:
+#    net_tomas_kadlecd2s_ui.example:
+#        class: Net\TomasKadlec\d2s\UiBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

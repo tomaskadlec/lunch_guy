@@ -1,3 +1,8 @@
+net_tomas_kadlecd2s_ui:
+    resource: "@NetTomasKadlecd2sUiBundle/Controller/"
+    type:     annotation
+    prefix:   /bi-pwt
+
 net_tomas_kadlecd2s:
     resource: "@NetTomasKadlecd2sBundle/Controller/"
     type:     annotation
