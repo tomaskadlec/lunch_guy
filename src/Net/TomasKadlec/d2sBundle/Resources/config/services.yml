@@ -100,3 +100,13 @@ services:
   net_tomas_kadlec_d2s.service.application_info_service:
     class: Net\TomasKadlec\d2sBundle\Service\ApplicationInfoService
     arguments: [ "%kernel.root_dir%" ]
+
+  net_tomas_kadlec_d2s.service_configuration.filesystem_provider:
+    class: Net\TomasKadlec\d2sBundle\Service\Configuration\FilesystemProvider
+    calls:
+      - [ setFilesystem, [ "@oneup_flysystem.d2s_filesystem" ] ]
+
+  net_tomas_kadlec_d2s.service.configuration:
+    class: Net\TomasKadlec\d2sBundle\Service\Configuration
+    calls:
+      - [ setProvider, [ "@net_tomas_kadlec_d2s.service_configuration.filesystem_provider" ]]
