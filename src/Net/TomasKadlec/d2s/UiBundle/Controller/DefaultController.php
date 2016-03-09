@@ -2,6 +2,7 @@
 
 namespace Net\TomasKadlec\d2s\UiBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -9,9 +10,12 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/")
+     * @Template()
      */
     public function indexAction()
     {
-        return $this->render('NetTomasKadlecd2sUiBundle:Default:index.html.twig');
+        $application = $this->get('net_tomas_kadlec_d2s.service_application.application');
+
+        return [];
     }
 }
