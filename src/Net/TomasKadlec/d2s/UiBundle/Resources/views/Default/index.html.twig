@@ -28,17 +28,12 @@
         <table>
         {% for dishType, dishes in restaurant_menu -%}
             <tr>
-                <th colspan="3" class="underline">{{ dishType }}</th>
+                <th colspan="2" class="underline">{{ dishType }}</th>
             </tr>
             {% for dish in dishes  -%}
             <tr>
                 <td>
                     {{- dish[0] -}}
-                    {%- if dish[2] is defined -%}
-                    {%- for cafeteria in dish[2]|split(' ') -%}
-                        <span class="cafeteria">{{ cafeteria }}</span>
-                    {%- endfor -%}
-                    {%- endif -%}
                 </td>
                 <td>{{ dish[1]|default("-") }}&nbsp;Kč</td>
             </tr>
