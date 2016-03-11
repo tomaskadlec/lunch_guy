@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fa4224736115cf450080e6d9b45b09ac",
-    "content-hash": "d481a47e4518db943182f732648bfba1",
+    "hash": "51d9911f9eebc5757abb4998d16c6cf1",
+    "content-hash": "3d13d917e0452d621a5440052a1cf87a",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -3279,6 +3279,49 @@
             "time": "2016-02-28 21:33:29"
         },
         {
+            "name": "tomaskadlec/symfony-test",
+            "version": "1.0.2",
+            "target-dir": "Net/TomasKadlec/Test",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tomaskadlec/symfony-test.git",
+                "reference": "5e46c8c081b79bfd632ab1fc9d2d7a4a7d1dcdac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tomaskadlec/symfony-test/zipball/5e46c8c081b79bfd632ab1fc9d2d7a4a7d1dcdac",
+                "reference": "5e46c8c081b79bfd632ab1fc9d2d7a4a7d1dcdac",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/symfony": ">=2.6,<4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Net\\TomasKadlec\\Test": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tomas Kadlec",
+                    "email": "kadleto2@fit.cvut.cz"
+                }
+            ],
+            "description": "A library for testing Symfony applications",
+            "homepage": "https://ict.fit.cvut.cz/gitlab/symfony/library-unittest",
+            "keywords": [
+                "phpunit",
+                "test",
+                "unit test"
+            ],
+            "time": "2016-03-11 15:17:28"
+        },
+        {
             "name": "twig/twig",
             "version": "v1.24.0",
             "source": {
@@ -3453,7 +3496,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "oneup/flysystem-bundle": 0,
-        "phpunit/phpunit": 0
+        "phpunit/phpunit": 0,
+        "tomaskadlec/symfony-test": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,

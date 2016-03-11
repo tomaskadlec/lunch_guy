@@ -34,7 +34,8 @@
         "knplabs/knp-menu-bundle": "^2.",
         "knplabs/github-api": "~1.4",
         "oneup/flysystem-bundle": "@stable",
-        "phpunit/phpunit": "@stable"
+        "phpunit/phpunit": "@stable",
+        "tomaskadlec/symfony-test": "@stable"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
