@@ -32,7 +32,7 @@ trait ConfigurationTrait
         $processor = new Processor();
         $configuration = new D2sConfiguration();
         $config =
-            $processor->processConfiguration($configuration, $config);
+            $processor->processConfiguration($configuration, $config, []);
         return $config;
     }
 
