@@ -1,13 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kadleto2
- * Date: 3.3.16
- * Time: 13:03
- */
-
 namespace Net\TomasKadlec\d2sBundle\Service;
-
 
 use Net\TomasKadlec\d2sBundle\Service\Configuration\ConfigurationProviderInterface;
 use Symfony\Component\PropertyAccess\PropertyAccess;
@@ -30,7 +22,9 @@ class Configuration implements ConfigurationInterface
     public function get($id, $key)
     {
         $config = $this->provider->read($id);
-        $accessor = PropertyAccess::createPropertyAccessor();
+        $accessor = PropertyAccess::createPropertyAccessorBuilder()
+            ->enableExceptionOnInvalidIndex()
+            ->getPropertyAccessor();
         try {
             return $accessor->getValue($config, $key);
         } catch (\Exception $e) {
@@ -46,7 +40,7 @@ class Configuration implements ConfigurationInterface
         try {
             $accessor->setValue($config, $key, $value);
         } catch (\Exception $e) {
-            throw new \RuntimeException("Configuration does not have a key $key or $key is empty.", $e->getCode(), $e);
+            throw new \RuntimeException("Invalid configuration", $e->getCode(), $e);
         }
         $this->provider->write($id, $config);
     }
