@@ -16,6 +16,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Oneup\FlysystemBundle\OneupFlysystemBundle(),
             new Net\TomasKadlec\d2sBundle\NetTomasKadlecd2sBundle(),
         ];
 
