@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@NetTomasKadlecd2sBundle/Resources/config/services.yml" }
+    - { resource: "@NetTomasKadlecd2sApiBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -33,6 +34,9 @@ framework:
     fragments:       ~
     http_method_override: true
     assets: ~
+    serializer:
+        enabled: true
+        enable_annotations: true
 
 # Twig Configuration
 twig:
@@ -81,3 +85,27 @@ oneup_flysystem:
     filesystems:
         d2s:
             adapter: d2s_adapter
+
+fos_rest:
+    view:
+        formats:
+            rss: false
+            xml: true
+        templating_formats:
+            html: false
+        force_redirects:
+            html: true
+        failed_validation: HTTP_BAD_REQUEST
+        default_engine: twig
+    format_listener:
+        enabled: true
+        rules:
+            - { path: '^/api', priorities: ['json', 'xml'], fallback_format: 'json', prefer_extension: true }
+            - { path: '^/', priorities: [ 'text/html', '*/*'], fallback_format: html, prefer_extension: true }
+
+nelmio_api_doc:
+    sandbox:
+        accept_type: application/json
+        body_format:
+            formats: [ json ]
+            default_format: json
