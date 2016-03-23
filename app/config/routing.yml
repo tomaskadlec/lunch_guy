@@ -1,8 +1,13 @@
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
+
+net_tomas_kadlecd2s_api_restaurants:
+    resource: "@NetTomasKadlecd2sApiBundle/Controller/DefaultController.php"
+    type:     rest
+    prefix:   /api/v1/
+
 net_tomas_kadlecd2s:
     resource: "@NetTomasKadlecd2sBundle/Controller/"
     type:     annotation
     prefix:   /
-
-NelmioApiDocBundle:
-    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
-    prefix:   /api/doc

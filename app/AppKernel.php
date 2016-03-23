@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new FOS\RestBundle\FOSRestBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new Net\TomasKadlec\d2sBundle\NetTomasKadlecd2sBundle(),
+            new Net\TomasKadlec\d2s\ApiBundle\NetTomasKadlecd2sApiBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
