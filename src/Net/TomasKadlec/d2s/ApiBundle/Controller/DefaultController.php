@@ -61,6 +61,10 @@ class DefaultController extends FOSRestController
      */
     public function getRestaurantsAction($restaurantId)
     {
+        $application = $this->getApplication();
+        if (!$application->isRestaurant($restaurantId))
+            return $this->handleView($this->view(null, 404));
+
         $data = [
             'links' => [
                 'self' => $this->generateUrl('get_restaurants', ['restaurantId' => $restaurantId], UrlGeneratorInterface::ABSOLUTE_URL),
@@ -69,7 +73,7 @@ class DefaultController extends FOSRestController
                 'type' => 'restaurant',
                 'id' => $restaurantId,
                 'attributes' => [
-                    'url' => $this->getApplication()->getRestaurantUri($restaurantId),
+                    'url' => $application->getRestaurantUri($restaurantId),
                 ],
                 'relationships' => [
                     'menu' => [
@@ -100,6 +104,11 @@ class DefaultController extends FOSRestController
      */
     public function getRestaurantsMenuAction($restaurantId)
     {
+
+        $application = $this->getApplication();
+        if (!$application->isRestaurant($restaurantId))
+            return $this->handleView($this->view(null, 404));
+
         $data = [
             'links' => [
                 'self' => $this->generateUrl('get_restaurants_menu', ['restaurantId' => $restaurantId], UrlGeneratorInterface::ABSOLUTE_URL),
@@ -109,8 +118,8 @@ class DefaultController extends FOSRestController
                 'id' => $restaurantId,
                 'attributes' => [
                     'title' => $restaurantId,
-                    'cached' => ($this->getApplication()->getRetrieved($restaurantId) instanceof \DateTime ? $this->getApplication()->getRetrieved($restaurantId)->format('c') : false),
-                    'content' => $this->getApplication()->retrieve($restaurantId),
+                    'cached' => ($application->getRetrieved($restaurantId) instanceof \DateTime ? $application->getRetrieved($restaurantId)->format('c') : false),
+                    'content' => $application->retrieve($restaurantId),
                 ],
                 'relationships' => [
                     'restaurant' => [
@@ -143,8 +152,12 @@ class DefaultController extends FOSRestController
      */
     public function deleteRestaurantMenuAction($restaurantId)
     {
+        $application = $this->getApplication();
+        if (!$application->isRestaurant($restaurantId))
+            return $this->handleView($this->view(null, 404));
+
         try {
-            $result = $this->getApplication()->invalidate($restaurantId);
+            $result = $application->invalidate($restaurantId);
             if ($result)
                 return $this->handleView($this->view(null));
             else
