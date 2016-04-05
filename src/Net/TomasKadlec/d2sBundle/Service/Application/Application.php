@@ -62,6 +62,15 @@ class Application implements ApplicationInterface
         }
     }
 
+    /** @inheritdoc */
+    public function getRestaurantUri($restaurantId)
+    {
+        $config = $this->configRestaurant($restaurantId);
+        if (isset($config['uri']))
+            return $config['uri'];
+        throw \RuntimeException('Restaurant has no URI configured');
+    }
+
     /**
      * @inheritdoc
      */
@@ -113,6 +122,18 @@ class Application implements ApplicationInterface
             return [];
         }
         return $this->parser->parse($configuration['parser'], $response->getBody()->getContents());
+    }
+
+    /** @inheritdoc */
+    public function getRetrieved($restaurantId)
+    {
+        return false;
+    }
+
+    /** inheritdoc */
+    public function invalidate($restaurantId)
+    {
+        return false;
     }
 
     /**
