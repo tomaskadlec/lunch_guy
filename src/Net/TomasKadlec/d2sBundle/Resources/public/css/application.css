@@ -124,6 +124,7 @@ body > footer > div.container > nav:not(:first-child) > ul > li {
 
 .item table {
     width: 100%;
+    border-spacing: 0;
 }
 
 .item th.underline {
@@ -132,15 +133,17 @@ body > footer > div.container > nav:not(:first-child) > ul > li {
     padding-bottom: .3em;
 }
 
+.item table tr:nth-child(2n+1) td {
+   background-color: rgb(240, 240, 240);
+}
+
 .item table td {
     vertical-align: top;
-    padding-top: .5em;
-    padding-right: .3em;
+    padding: .4em;
 }
 
 .item table td.price {
     text-align: right;
-    padding-right: 0;
     white-space: nowrap;
 }
 
