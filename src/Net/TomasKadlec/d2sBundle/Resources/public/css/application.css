@@ -168,7 +168,19 @@ body > footer > div.container > nav:not(:first-child) > ul > li {
     .container {
         flex-direction: column;
     }
+
     .item {
-        width: calc(100% - 2em);
+        width: 100%;
+        margin-left: 0;
+    }
+
+    h1, h2, h3, table {
+      text-rendering: optimizeLegibility;
+    }
+
+    body > footer > div.container > nav {
+        width: auto;
+        margin: auto;
+        text-align: center;
     }
 }
