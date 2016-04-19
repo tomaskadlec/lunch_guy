@@ -13,7 +13,7 @@
             {%- endfor -%}
             {%- endif -%}
         </td>
-        <td>{{ dish[1]|default("-") }}&nbsp;Kč</td>
+        <td class="price">{{ dish[1]|default("-") }}&nbsp;Kč</td>
     </tr>
     {% endfor -%}
 {% else -%}
