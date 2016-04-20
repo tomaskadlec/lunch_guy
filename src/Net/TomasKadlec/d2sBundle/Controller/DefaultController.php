@@ -21,12 +21,20 @@ class DefaultController extends Controller
     public function restaurantAction($restaurantId)
     {
         $result = [
+            'restaurantId' => $restaurantId,
             'result' => $this->getApplication()->retrieve($restaurantId),
             'retrieved' => $this->getApplication()->getRetrieved($restaurantId),
         ];
         return $result;
     }
 
+    /**
+     * @Route("/restaurants/{restaurantId}/delete", methods={"GET"})
+     */
+    public function  deleteAction($restaurantId) {
+       $this->getApplication()->invalidate($restaurantId);
+       return $this->redirectToRoute("net_tomaskadlec_d2s_default_index");
+    }
 
     /**
      * @Route("/", methods={"GET"})

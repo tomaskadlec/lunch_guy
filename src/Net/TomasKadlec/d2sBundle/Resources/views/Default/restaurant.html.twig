@@ -20,4 +20,7 @@
 <tr><th>Menu není k dispozici.</th></tr>
 {% endfor -%}
 </table>
-<footer>Načteno {{ retrieved|date('j. n. Y G:i') }}</footer>
+<footer>
+    Načteno {{ retrieved|date('j. n. Y G:i') }}
+    <a class="button right" href="{{ path("net_tomaskadlec_d2s_default_delete", {'restaurantId': restaurantId}) }}"><i class="fa fa-trash"></i></a>
+</footer>
