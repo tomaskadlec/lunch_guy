@@ -20,10 +20,13 @@ class DefaultController extends Controller
      */
     public function restaurantAction($restaurantId)
     {
-        return [
+        $result = [
             'result' => $this->getApplication()->retrieve($restaurantId),
+            'retrieved' => $this->getApplication()->getRetrieved($restaurantId),
         ];
+        return $result;
     }
+
 
     /**
      * @Route("/", methods={"GET"})

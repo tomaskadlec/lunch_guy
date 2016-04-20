@@ -5,11 +5,25 @@
 <script src="{{ asset('bundles/nettomaskadlecd2s/js/d2s.js') }}"></script>
 {% endblock %}
 
+{% block stylesheets %}
+{{ parent() }}
+<style type="text/css">
+
+div.item footer {
+    border-top: 1px solid gray;
+    font-size: 0.8em;
+    text-align: right;
+}
+
+</style>
+{% endblock %}
+
 {% block body %}
 <div class="container">
     {% for restaurantId in restaurants %}
     <div class="item">
         <h2>{{ restaurantId }}</h2>
+
         <div class="restaurant" data-url="{{ path('net_tomaskadlec_d2s_default_restaurant', { 'restaurantId': restaurantId })  }}">Načítá se ...</div>
     </div>
     {% endfor %}
