@@ -124,11 +124,29 @@ body > footer > div.container > nav:not(:first-child) > ul > li {
 
 .item table {
     width: 100%;
+    border-spacing: 0;
 }
 
 .item th.underline {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #888;
+    padding-top: 1em;
+    padding-bottom: .3em;
 }
+
+.item table tr:nth-child(2n+1) td {
+   background-color: rgb(240, 240, 240);
+}
+
+.item table td {
+    vertical-align: top;
+    padding: .4em;
+}
+
+.item table td.price {
+    text-align: right;
+    white-space: nowrap;
+}
+
 .item table td span.cafeteria {
     background-color: #565656;
     color: #FFFFFF;
@@ -150,7 +168,19 @@ body > footer > div.container > nav:not(:first-child) > ul > li {
     .container {
         flex-direction: column;
     }
+
     .item {
-        width: calc(100% - 2em);
+        width: 100%;
+        margin-left: 0;
+    }
+
+    h1, h2, h3, table {
+      text-rendering: optimizeLegibility;
+    }
+
+    body > footer > div.container > nav {
+        width: auto;
+        margin: auto;
+        text-align: center;
     }
 }

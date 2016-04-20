@@ -31,6 +31,14 @@ interface ApplicationInterface
     public function isRestaurant($restaurantId);
 
     /**
+     * Returns URI from which menu is retrieved and parsed
+     *
+     * @param $restaurantId
+     * @return mixed
+     */
+    public function getRestaurantUri($restaurantId);
+
+    /**
      * Returns IDs of all registered parsers
      * @return array
      */
@@ -66,6 +74,23 @@ interface ApplicationInterface
      * @return array
      */
     public function retrieve($restaurantId);
+
+    /**
+     * Returns \DateTime object indicating when cached data was retrieved and stored.
+     *
+     * @param $restaurantId
+     * @return \DateTime|false false if application does not use cache
+     */
+    public function getRetrieved($restaurantId);
+
+    /**
+     * Invalidates data retrieved from restaurant's URI if applicable (e.g. using
+     * CachedApplication or similar caching application implementation.
+     *
+     * @param $restaurantId
+     * @return true if cache was invalidated, false otherwise
+     */
+    public function invalidate($restaurantId);
 
     /**
      * Outputs menu of restaurantId

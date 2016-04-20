@@ -32,7 +32,7 @@ class CachedApplication extends Application
     public function retrieve($restaurantId)
     {
         if ($this->cache->contains($restaurantId)) {
-            $result = $this->cache->fetch($restaurantId);
+            $result = $this->cache->fetch($restaurantId)['data'];
 
         } else {
             $result = parent::retrieve($restaurantId);
@@ -42,9 +42,35 @@ class CachedApplication extends Application
                 $tomorrow = new \DateTime('tomorrow');
                 $lifetime =  $tomorrow->getTimestamp() - $now->getTimestamp() + 3600; // invalidate cache an hour after midnight
             }
-            $this->cache->save($restaurantId, $result, $lifetime);
+            $this->cache->save($restaurantId, [
+                'cached' => new \DateTime(),
+                'data' => $result
+            ], $lifetime);
         }
         return $result;
+    }
+
+    /** @inheritdoc */
+    public function getRetrieved($restaurantId)
+    {
+        if ($this->cache->contains($restaurantId)) {
+            return $this->cache->fetch($restaurantId)['cached'];
+        }
+        return false;
+    }
+
+    /** @inheritdoc */
+    public function invalidate($restaurantId)
+    {
+        if ($this->cache->contains($restaurantId)) {
+            $cached = $this->cache->fetch($restaurantId)['cached']->getTimestamp();
+            $now = (new \DateTime())->getTimestamp();
+            if ($now - $cached < 180)
+                throw new \RuntimeException('Invalidation rate too big.');
+            $this->cache->delete($restaurantId);
+            return true;
+        }
+        return false;
     }
 
 }
