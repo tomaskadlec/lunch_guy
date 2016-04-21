@@ -25,7 +25,7 @@ function LoadableObject() {
  * @constructor
  */
 function Restaurants() {
-    this.uri = 'http://localhost:8080/api/v1/restaurants';
+    this.uri = apiBaseUrl + '/restaurants';
 
     this.get = function(id) {
         if (this.data[id])
@@ -42,7 +42,7 @@ Restaurants.prototype = new LoadableObject();
  */
 function Menu(restaurant) {
 
-    this.uri = 'http://localhost:8080/api/v1/restaurants/' + restaurant + '/menu';
+    this.uri = apiBaseUrl + '/restaurants/' + restaurant + '/menu';
     this.uriDelete = this.uri + '/delete';
 
     // postprocess loaded data

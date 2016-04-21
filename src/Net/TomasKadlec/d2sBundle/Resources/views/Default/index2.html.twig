@@ -18,6 +18,9 @@
 
 {% block javascripts %}
 {{ parent() }}
+<script type="text/javascript">
+var apiBaseUrl = "{{ url('net_tomas_kadlecd2s_api_restaurants_base') }}";
+</script>
 <script src="{{ asset('bundles/nettomaskadlecd2s/js/obedar2.js') }}"></script>
 {% endblock %}
 

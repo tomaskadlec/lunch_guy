@@ -7,6 +7,9 @@ net_tomas_kadlecd2s_api_restaurants:
     type:     rest
     prefix:   /api/v1/
 
+net_tomas_kadlecd2s_api_restaurants_base:
+    path:   /api/v1
+
 net_tomas_kadlecd2s:
     resource: "@NetTomasKadlecd2sBundle/Controller/"
     type:     annotation
