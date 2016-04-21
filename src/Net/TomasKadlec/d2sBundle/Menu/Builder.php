@@ -66,6 +66,14 @@ class Builder
         }
 
         $menu
+            ->addChild('Obědář.js', [
+                'route' => 'net_tomaskadlec_d2s_default_indexjs',
+                'attributes' => [
+                    'title' => 'Kam na oběd?',
+                ],
+            ]);
+
+        $menu
             ->addChild('O aplikaci', [
                 'route' => 'net_tomaskadlec_d2s_about_index'
             ]);

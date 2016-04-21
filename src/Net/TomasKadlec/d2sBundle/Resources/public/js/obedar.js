@@ -1,4 +1,4 @@
-// ------------------------- DTO -------------------------  //
+// ------------------------- Service -------------------------  //
 
 function load() {
     var that = this;
@@ -9,7 +9,7 @@ function load() {
 };
 
 /**
- * LoadableObject - common parent for DTO objects
+ * LoadableObject - common parent for service objects
  * @constructor
  */
 function LoadableObject() {
@@ -21,7 +21,7 @@ function LoadableObject() {
 }
 
 /**
- * Restaurants DTO
+ * Restaurants - service
  * @constructor
  */
 function Restaurants() {
@@ -31,12 +31,16 @@ function Restaurants() {
         if (this.data[id])
           return this.data[id];
         return undefined;
-    }
+    };
+
+    this.getIndex = function(restaurant) {
+        return this.data.indexOf(restaurant);
+    };
 }
 Restaurants.prototype = new LoadableObject();
 
 /**
- * Menu
+ * Menu - service
  * @param restaurant
  * @constructor
  */
@@ -47,6 +51,7 @@ function Menu(restaurant) {
 
     // postprocess loaded data
     $(this).on('data:loaded', function() {
+        this.cached = new Date(this.data.data.attributes.cached);
         this.data = this.data.data.attributes.content;
     });
 }
@@ -60,13 +65,16 @@ Menu.prototype = new LoadableObject();
  */
 function RestaurantsView(restaurants) {
 
+    this.current = undefined;
     this.restaurants = restaurants;
     this.element = 'select#restaurant';
 
     this.init = function () {
         $(this.restaurants).on('data:loaded', this.view());
         $(this.element).change(this.change());
+        $(window).bind('hashchange', this.hashChange());
         this.restaurants.load();
+        //(this.hashChange())();
         (this.change())();
     };
 
@@ -88,8 +96,20 @@ function RestaurantsView(restaurants) {
     this.change = function() {
         var that = this;
         return function(event) {
-            new MenuView(that.restaurants.get(this.value));
+            that.current = that.restaurants.get(this.value);
+            new MenuView(that.current);
         }
+    };
+
+    this.hashChange = function () {
+        var that = this;
+        return function(event) {
+            restaurant = window.location.hash.substr(1);
+            if (restaurant != that.current) {
+                $(that.element).val(that.restaurants.getIndex(restaurant));
+                $(that.element).trigger('change');
+            }
+        };
     }
 }
 
@@ -123,23 +143,27 @@ function MenuView(restaurant) {
                         + this.data[type][dish][0] + '</td><td>'
                         + this.data[type][dish][1] + '</td></tr>');
             }
-            var h2 = document.createElement('h2')
+            var h2 = document.createElement('h2');
             h2.innerHTML = that.restaurant;
             var div = document.createElement('div');
             $(that.element)
                 .empty()
                 .append(h2)
                 .append(
-                    $(div).addClass('item').append(table)
-                )
-            ;
+                    $(div)
+                        .addClass('item')
+                        .append(table)
+                        .append('<footer>Načteno ' + that.menu.cached.toLocaleString('cs-CZ', {'timeZone': 'Europe/Prague'}) + '</footer>')
+                );
+            window.location.hash = that.restaurant;
+            window.document.title = that.restaurant + ' - Obědář';
         }
     };
 
     this.undefined = function() {
         $(this.element)
-            .empty().append('<p>Menu is not available. Plese select a restaurant.</p>');
-    }
+            .empty().append('<p>Není zvolena žádná restaurace. Prosím, zvolte nějakou z menu.</p>');
+    };
 
     this.init();
 }

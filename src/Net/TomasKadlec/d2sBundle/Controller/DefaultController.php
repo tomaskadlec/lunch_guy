@@ -50,11 +50,11 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/o2", methods={"GET"})
+     * @Route("/js", methods={"GET"})
      * @Template()
      * @return array
      */
-    public function index2Action()
+    public function indexJsAction()
     {
         return [
         ];

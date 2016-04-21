@@ -155,6 +155,29 @@ body > footer > div.container > nav:not(:first-child) > ul > li {
     margin: auto 0.25em;
 }
 
+.item .button {
+    color: white;
+    background-color: #2B74A7;
+    padding: 0.3em 0.5em;
+    border-radius: 0.3em;
+    margin-left: 1em;
+}
+
+.item .button:hover {
+    background-color: #2E3234;
+    color: white;
+}
+
+/*.item .right {*/
+    /*float: right;*/
+/*}*/
+
+.item footer {
+    border-top: 1px solid gray;
+    font-size: 0.8em;
+    text-align: right;
+}
+
 @media screen and (min-device-pixel-ratio: 1) {
     .container {
         flex-direction: column;
