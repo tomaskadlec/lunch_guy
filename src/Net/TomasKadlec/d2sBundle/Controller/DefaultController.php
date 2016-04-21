@@ -50,6 +50,17 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/o2", methods={"GET"})
+     * @Template()
+     * @return array
+     */
+    public function index2Action()
+    {
+        return [
+        ];
+    }
+
+    /**
      * @return \Net\TomasKadlec\d2sBundle\Service\Application\Application
      */
     protected function getApplication()
