@@ -18,7 +18,7 @@
         <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
         <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
         <script type="text/javascript">
-            window.cookieconsent_options = {"message":"Tento web využívá cookies. Jeho používáním s tím vyjadřujete souhlas.","dismiss":"Rozumím!","learnMore":"Více o cookies","link":"{{ path('net_tomaskadlec_d2s_terms_index') }}#cookies","theme":"dark-top"};
+            window.cookieconsent_options = {"message":"Tento web využívá cookies. Jeho používáním s tím vyjadřujete souhlas.","dismiss":"Rozumím!","learnMore":"Více o cookies","link":"{{ path('net_tomaskadlec_lunchguy_ui_terms_index') }}#cookies","theme":"dark-top"};
         </script>
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
         <!-- End Cookie Consent plugin -->
@@ -26,9 +26,8 @@
         {% block stylesheets %}
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700italic,700,800,800italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="{{ asset('bundles/nettomaskadlecd2s/css/base.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('bundles/nettomaskadlecd2s/css/application.css') }}"/>
-        {#<link rel='stylesheet' href="{{ asset('bundles/nettomaskadlecd2s/css/application_hires.css') }}" media='only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)' />#}
+        <link rel="stylesheet" href="{{ asset('bundles/nettomaskadleclunchguyui/css/base.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('bundles/nettomaskadleclunchguyui/css/application.css') }}"/>
         {% endblock %}
         <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAMAAAC8EZcfAAAAV1BMVEX///9EREAyPk9AQ0I2QUosN0YwPU0zPk0xP04sNkUtOEZDQz8yPk5EREBDQ0BDQ0AxPk0wPUwxPU0sNkVEREAyPk8yP08zPk40Pk4zPk80P04zP04zP0+GfNacAAAAFXRSTlMACv0iYGzR99FkjQL9Dg4C5WrXbgx3lBdmAAABfklEQVQYle3cyU4DMRRE0TDP8wz9/9/JriqL0sOhA3qW7l2avPYxGysSzWZTdqAO1aK+lNc+ldc+VL1HbQEIECBAgPMAj9QSGmXVE8fqF783gAABAgTYEvgfrDRxogACBAgQ4IxAf2WpNzlVZ8qfO1eeuFBmXaq0h1VXCiBAgAABdgdeqzTitRvlx/inac0T6XNpj3e1ddUBBAgQIMDmwJr1pjYhT3jN19roQdIXKYAAAQIEOA8wsTzyqhLQE6PXWjrIEgIIECBAgPMAE8trNdAT6XmjB3HpIAABAgQIsDswseqR+lpL3aqETpftnQIIECBAgN2BNctr9bXmiXvlgzyo3fcACBAgQIDdgS+qHvGaZ9ccZHQPgAABAgTYHZgek0bS8H4O8gMLIECAAAFOA/Rr8YnlTTyxn4M8KoAAAQIEOCMw/VuuJzV6SaWDrGHFdzsBAgQIEGBL4Gh+rXENq97jWQ2zAAIECBBgc+DuV87Wn4X92R4AAQIECLAR8BuC82ODdgy5vAAAAABJRU5ErkJggg==" rel="icon" type="image/x-icon" />
     </head>

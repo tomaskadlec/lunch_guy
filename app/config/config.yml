@@ -2,9 +2,9 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: "@NetTomasKadlecd2sBundle/Resources/config/services.yml" }
-    - { resource: "@NetTomasKadlecd2sUiBundle/Resources/config/services.yml" }
-    - { resource: "@NetTomasKadlecd2sApiBundle/Resources/config/services.yml" }
+    - { resource: "@NetTomasKadlecLunchGuyBaseBundle/Resources/config/services.yml" }
+    - { resource: "@NetTomasKadlecLunchGuyUiBundle/Resources/config/services.yml" }
+    - { resource: "@NetTomasKadlecLunchGuyApiBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -46,7 +46,7 @@ twig:
     globals:
         app_name:     "%app_name%"
         analytics:    "%analytics%"
-        app_info:     "@net_tomas_kadlec_d2s.service.application_info_service"
+        app_info:     "@net_tomas_kadlec_lunch_guy_base.service.application_info_service"
 
 # Doctrine Configuration
 doctrine:
@@ -80,12 +80,12 @@ swiftmailer:
 
 oneup_flysystem:
     adapters:
-        d2s_adapter:
+        lunch_guy_adapter:
             local:
-                directory: %kernel.root_dir%/d2s
+                directory: %kernel.root_dir%/lunch_guy
     filesystems:
-        d2s:
-            adapter: d2s_adapter
+        lunch_guy:
+            adapter: lunch_guy_adapter
 
 fos_rest:
     param_fetcher_listener: true

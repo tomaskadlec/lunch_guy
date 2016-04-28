@@ -1,0 +1,56 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style type="text/css">
+    #menu {
+        margin: 2em 1em;
+    }
+    .container {
+        display: block;
+    }
+    .item {
+        display: block;
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript">
+var apiBaseUrl = "{{ url('net_tomas_kadlec_lunch_guy_api_base') }}";
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="{{ asset('bundles/nettomaskadleclunchguyui/js/angular/app.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container" ng-app="obedar">
+    {[ "Hello world!" ]}
+    <nav class="restaurant" ng-controller="RestaurantsController as restaurants">
+        <ul>
+            <li ng-repeat="restaurant in restaurants.restaurants">
+                <a href ng-click="restaurants.select(restaurant)">{[ restaurant ]}</a>
+            </li>
+        </ul>
+    </nav>
+    <article id="menu" class="item" ng-controller="MenuController as menu">
+
+        <h2>{[ menu.state.restaurant ]}</h2>
+
+        <table>
+            <tbody ng-repeat="(type, dishes) in menu.state.menu">
+                <tr>
+                    <th colspan="2">{[ type ]}</th>
+                </tr>
+                <tr ng-repeat="dish in dishes">
+                    <td>{[ dish[0] ]}</td>
+                    <td>{[ dish[1] ]}</td>
+                </tr>
+            </tbody>
+        </table>
+        <footer ng-hide="menu.state.cached === undefined">Načteno {[ menu.state.cached | date:'medium' ]}</footer>
+    </article>
+</div>
+{% endblock %}

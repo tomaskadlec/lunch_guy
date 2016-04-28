@@ -1,0 +1,22 @@
+{% extends "::base.html.twig" %}
+
+{% block javascripts %}
+{{ parent() }}
+<script src="{{ asset('bundles/nettomaskadleclunchguyui/js/lunch_guy.js') }}"></script>
+{% endblock %}
+
+{#{% block stylesheets %}#}
+{#{{ parent() }}#}
+{#{% endblock %}#}
+
+{% block body %}
+<div class="container">
+    {% for restaurantId in restaurants %}
+    <div class="item">
+        <h2>{{ restaurantId }}</h2>
+
+        <div class="restaurant" data-url="{{ path('net_tomaskadlec_lunchguy_ui_default_restaurant', { 'restaurantId': restaurantId })  }}">Načítá se ...</div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

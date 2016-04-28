@@ -20,10 +20,10 @@ parameters:
 
     app_name: 'Obědář'
     analytics: ~
-    d2s:
+    lunch_guy:
         contributors:
             user: tomaskadlec
-            repository: d2s
+            repository: lunch_guy
         restaurants:
             'U Pětníka':
                 'uri': 'http://www.drest.cz/u-petnika'

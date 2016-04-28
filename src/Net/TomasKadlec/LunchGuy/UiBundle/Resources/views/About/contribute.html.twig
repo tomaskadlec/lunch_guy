@@ -1,0 +1,30 @@
+{% extends('::base.html.twig') %}
+
+{% block body %}
+<article>
+    <p>
+        Aplikace <a href="{{ path('net_tomaskadlec_lunchguy_ui_default_index') }}">Obědář</a> je vyvíjena jako open-source. Jsme
+        a budeme rádi za přispění každého z vás, kdo máte o vývoj této aplikace zájem. Dopředu děkujeme! Vývoj aplikace probíhá
+        v <a href="">repozitáři na GitHubu</a>.
+    </p>
+
+    <p>
+        S vývojem nám můžete pomoci i když nejste vývojář. Pokud aplikaci používáte nebo ji chcete používat (i někde jinde
+        než třeba v Praze 6 Dejvicích), zajímá nás váš názor, co by aplikace měla umět nebo co jsme udělali špatně. Stačí
+        v <a href="">repozitáři na GitHubu</a> přidat <em>issue</em>. A když by vám to nešlo anglicky, piště klidně česky,
+        to zvládneme také!
+    </p>
+
+    <p>
+        Pokud jste vývojář a chcete se zapojit, postupujte podle diagramu níže a instrukcí , které najdete v repozitáři.
+        To, že jste si vybrali nějaké <em>issue</em> a pracujete na něm nám dejte co nejřív vědět. Přidejte k němu komentář
+        ve stylu <em>I am working on this one.</em>. Prosíme, používejte angličtinu ve všech případech (v kódu, komentářích,
+        v <em>issues</em> i <em>PRs</em>).
+    </p>
+
+    <p>
+        <img src="{{ asset('images/developer.png') }}"/>
+    </p>
+
+</article>
+{% endblock %}

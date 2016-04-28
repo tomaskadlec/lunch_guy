@@ -1,0 +1,18 @@
+services:
+
+  net_tomas_kadlec_lunch_guy_ui.menu.builder:
+    class: Net\TomasKadlec\LunchGuy\UiBundle\Menu\Builder
+    calls:
+      - [ setFactory, [ "@knp_menu.factory" ]]
+      - [ setApplication, [ "@net_tomas_kadlec_lunch_guy_base.service.application" ] ]
+    tags:
+      - { name: knp_menu.menu_builder, method: getMain, alias: main }
+      - { name: knp_menu.menu_builder, method: getExternal, alias: external }
+
+  net_tomas_kadlec_lunch_guy_ui.twig.menu_extension:
+    class: Net\TomasKadlec\LunchGuy\UiBundle\Twig\MenuExtension
+    arguments:
+      - "@knp_menu.helper"
+      - "@knp_menu.matcher"
+    tags:
+      - { name: twig.extension }

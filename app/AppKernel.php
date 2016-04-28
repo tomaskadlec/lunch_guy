@@ -19,9 +19,9 @@ class AppKernel extends Kernel
             new Oneup\FlysystemBundle\OneupFlysystemBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
-            new Net\TomasKadlec\d2sBundle\NetTomasKadlecd2sBundle(),
-            new Net\TomasKadlec\d2s\UiBundle\NetTomasKadlecd2sUiBundle(),
-            new Net\TomasKadlec\d2s\ApiBundle\NetTomasKadlecd2sApiBundle(),
+            new Net\TomasKadlec\LunchGuy\BaseBundle\NetTomasKadlecLunchGuyBaseBundle(),
+            new Net\TomasKadlec\LunchGuy\UiBundle\NetTomasKadlecLunchGuyUiBundle(),
+            new Net\TomasKadlec\LunchGuy\ApiBundle\NetTomasKadlecLunchGuyApiBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

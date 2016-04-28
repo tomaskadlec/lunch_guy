@@ -2,15 +2,15 @@ NelmioApiDocBundle:
     resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
     prefix:   /api/doc
 
-net_tomas_kadlecd2s_api_restaurants:
-    resource: "@NetTomasKadlecd2sApiBundle/Controller/DefaultController.php"
+net_tomas_kadlec_lunch_guy_api_base:
+    path:     /api/v1
+
+net_tomas_kadlec_lunch_guy_api:
+    resource: "@NetTomasKadlecLunchGuyApiBundle/Controller/DefaultController.php"
     type:     rest
     prefix:   /api/v1/
 
-net_tomas_kadlecd2s_api_restaurants_base:
-    path:   /api/v1
-
-net_tomas_kadlecd2s:
-    resource: "@NetTomasKadlecd2sBundle/Controller/"
+net_tomas_kadlec_lunch_guy_ui:
+    resource: "@NetTomasKadlecLunchGuyUiBundle/Controller/"
     type:     annotation
     prefix:   /

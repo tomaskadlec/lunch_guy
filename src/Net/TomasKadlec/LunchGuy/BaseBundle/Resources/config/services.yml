@@ -1,0 +1,95 @@
+services:
+
+  net_tomas_kadlec_lunch_guy_base.service.application:
+    alias: net_tomas_kadlec_lunch_guy_base.service_application.cached_application
+
+  net_tomas_kadlec_lunch_guy_base.service_application.application:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Application\Application
+    calls:
+      - [ setConfiguration, [ "%lunch_guy%" ] ]
+      - [ setParser, [ "@net_tomas_kadlec_lunch_guy_base.service.parser" ] ]
+      - [ setOutput, [ "@net_tomas_kadlec_lunch_guy_base.service.output" ] ]
+
+  net_tomas_kadlec_lunch_guy_base.service_application.cached_application:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Application\CachedApplication
+    parent: net_tomas_kadlec_lunch_guy_base.service_application.application
+    calls:
+      - [ setCache, [ "@net_tomas_kadlec_lunch_guy_base.service.cache" ] ]
+
+  net_tomas_kadlec_lunch_guy_base.service.parser:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Parser
+
+  net_tomas_kadlec_lunch_guy_base.service_parser.drest:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Parser\DRest
+    tags:
+      - { name: net_tomas_kadlec_lunch_guy_base.service.parser }
+
+  net_tomas_kadlec_lunch_guy_base.service_parser.utopolu:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Parser\UTopolu
+    tags:
+      - { name: net_tomas_kadlec_lunch_guy_base.service.parser }
+
+  net_tomas_kadlec_lunch_guy_base.service_parser.uprofesora:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Parser\UProfesora
+    tags:
+      - { name: net_tomas_kadlec_lunch_guy_base.service.parser }
+
+  net_tomas_kadlec_lunch_guy_base.service_parser.simigastro:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Parser\SimiGastro
+    tags:
+      - { name: net_tomas_kadlec_lunch_guy_base.service.parser }
+
+  net_tomas_kadlec_lunch_guy_base.service_parser.santinka:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Parser\Santinka
+    tags:
+      - { name: net_tomas_kadlec_lunch_guy_base.service.parser }
+
+  net_tomas_kadlec_lunch_guy_base.service_parser.suz:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Parser\SUZ
+    tags:
+      - { name: net_tomas_kadlec_lunch_guy_base.service.parser }
+
+  net_tomas_kadlec_lunch_guy_base.service_parser.pod_juliskou:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Parser\PodJuliskou
+    tags:
+      - { name: net_tomas_kadlec_lunch_guy_base.service.parser }
+
+  net_tomas_kadlec_lunch_guy_base.service_parser.pod_loubim:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Parser\PodLoubim
+    tags:
+      - { name: net_tomas_kadlec_lunch_guy_base.service.parser }
+
+  net_tomas_kadlec_lunch_guy_base.service.output:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Output
+
+  net_tomas_kadlec_lunch_guy_base.service_output.slack:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Output\Slack
+    tags:
+      - { name: net_tomas_kadlec_lunch_guy_base.service.output }
+
+  net_tomas_kadlec_lunch_guy_base.service_output.stdout:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Output\StdOut
+    tags:
+      - { name: net_tomas_kadlec_lunch_guy_base.service.output }
+
+  net_tomas_kadlec_lunch_guy_base.service.cache:
+    class: Doctrine\Common\Cache\PhpFileCache
+    arguments: [ "%kernel.cache_dir%", ".restaurants.php" ]
+
+  net_tomas_kadlec_lunch_guy_base.service.contributors:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Contributors
+    arguments: [ "%kernel.cache_dir%", "%lunch_guy%" ]
+
+  net_tomas_kadlec_lunch_guy_base.service.application_info_service:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\ApplicationInfoService
+    arguments: [ "%kernel.root_dir%" ]
+
+  net_tomas_kadlec_lunch_guy_base.service_configuration.filesystem_provider:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Configuration\FilesystemProvider
+    calls:
+      - [ setFilesystem, [ "@oneup_flysystem.lunch_guy_filesystem" ] ]
+
+  net_tomas_kadlec_lunch_guy_base.service.configuration:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Configuration
+    calls:
+      - [ setProvider, [ "@net_tomas_kadlec_lunch_guy_base.service_configuration.filesystem_provider" ]]
