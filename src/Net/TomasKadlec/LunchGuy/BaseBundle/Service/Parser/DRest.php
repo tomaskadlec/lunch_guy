@@ -69,6 +69,8 @@ class DRest extends AbstractParser
                     $key = static::KEY_SOUPS;
                 else if (preg_match('/Hlavní jídla/', $row[0]))
                     $key = static::KEY_MAIN;
+                else if (preg_match('/Hlavní jídlo/', $row[0]))
+                    $key = static::KEY_MAIN;
                 else if (preg_match('/Denní menu/', $row[0]))
                     $key = static::KEY_MENU;
                 else
