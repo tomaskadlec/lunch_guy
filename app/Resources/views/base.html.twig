@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html {% block html %}{% endblock %}>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="initial-scale=1">
@@ -70,6 +70,8 @@
                 </nav>
             </div>
         </footer>
+        {% endblock %}
+        {% block javascripts_late %}
         {% endblock %}
     </body>
 </html>

@@ -37,7 +37,8 @@
         "phpunit/phpunit": "@stable",
         "tomaskadlec/symfony-test": "@stable",
         "friendsofsymfony/rest-bundle": "2.0.0-BETA2",
-        "nelmio/api-doc-bundle": "^2.11"
+        "nelmio/api-doc-bundle": "^2.11",
+        "friendsofsymfony/jsrouting-bundle": "^1.6"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

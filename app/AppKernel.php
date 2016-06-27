@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Oneup\FlysystemBundle\OneupFlysystemBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Net\TomasKadlec\LunchGuy\BaseBundle\NetTomasKadlecLunchGuyBaseBundle(),
             new Net\TomasKadlec\LunchGuy\UiBundle\NetTomasKadlecLunchGuyUiBundle(),
             new Net\TomasKadlec\LunchGuy\ApiBundle\NetTomasKadlecLunchGuyApiBundle(),

@@ -2,6 +2,9 @@ NelmioApiDocBundle:
     resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
     prefix:   /api/doc
 
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
 net_tomas_kadlec_lunch_guy_api_base:
     path:     /api/v1
 
