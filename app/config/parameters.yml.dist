@@ -75,6 +75,11 @@ parameters:
                 'parser': 'kulatak'
                 'web': ~
                 'address': 'Vítězné náměstí 820/12, Praha 6'
+            'Budvarka':
+                'uri': 'http://www.budvarkadejvice.cz/denni-nabidka/'
+                'parser': 'budvarka'
+                'web': ~
+                'address': 'Wuchterlova 336/22, Praha 6'
             'Studentský dům':
                 'uri': 'http://agata.suz.cvut.cz/jidelnicky/index.php?clPodsystem=2'
                 'parser': 'suz'
