@@ -28,39 +28,68 @@ parameters:
             'U Pětníka':
                 'uri': 'http://www.drest.cz/u-petnika'
                 'parser': 'drest'
+                'web': ~
+                'address': ~
             'Na Urale':
                 'uri': 'http://www.drest.cz/na-urale'
                 'parser': 'drest'
+                'web': ~
+                'address': ~
             'Na Slamníku':
                 'uri': 'http://www.drest.cz/na-slamniku'
                 'parser': 'drest'
+                'web': ~
+                'address': ~
             'U Topolů':
                 'uri': 'http://www.utopolu.cz/ajax/cs/menu/getmenu/0'
                 'parser': 'utopolu'
+                'web': ~
+                'address': ~
             'U Profesora':
                 'uri': 'http://uprofesora.cz/'
                 'parser': 'uprofesora'
+                'web': ~
+                'address': ~
             'Cesta časem':
                 'uri': 'http://www.cestacasem.cz/denni-nabidka/'
                 'parser': 'simigastro'
+                'web': ~
+                'address': ~
             'Bistro Santinka':
                 'uri': 'http://www.santinka.cz/'
                 'parser': 'santinka'
+                'web': ~
+                'address': ~
             'Pod Juliskou':
                 'uri': 'http://www.podjuliskou.cz/menu/'
                 'parser': 'podjuliskou'
+                'web': ~
+                'address': ~
             'Pod Loubím':
                 'uri': 'http://www.podloubim.com/menu/'
                 'parser': 'podloubim'
+                'web': ~
+                'address': ~
+            'Kulaťák':
+                'uri': 'http://www.kulatak.cz/dennimenu'
+                'parser': 'kulatak'
+                'web': ~
+                'address': 'Vítězné náměstí 820/12, Praha 6'
             'Studentský dům':
                 'uri': 'http://agata.suz.cvut.cz/jidelnicky/index.php?clPodsystem=2'
                 'parser': 'suz'
+                'web': ~
+                'address': ~
             'Pizzerie la fontanella':
                 'uri': 'http://agata.suz.cvut.cz/jidelnicky/index.php?clPodsystem=10'
                 'parser': 'suz'
+                'web': ~
+                'address': ~
             'Masarykova kolej':
                 'uri': 'http://agata.suz.cvut.cz/jidelnicky/index.php?clPodsystem=5'
                 'parser': 'suz'
+                'web': ~
+                'address': ~
         output:
             stdout: yes
             slack:

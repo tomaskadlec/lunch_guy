@@ -15,6 +15,7 @@ abstract class AbstractParser implements ParserInterface
 {
     protected static $selector = 'table tr';
 
+    /** @inheritdoc */
     public function parse($format, $data, $charset = 'UTF-8')
     {
         if (!$this->isSupported($format))

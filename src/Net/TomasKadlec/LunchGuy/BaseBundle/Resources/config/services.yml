@@ -59,6 +59,11 @@ services:
     tags:
       - { name: net_tomas_kadlec_lunch_guy_base.service.parser }
 
+  net_tomas_kadlec_lunch_guy_base.service_parser.kulatak:
+    class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Parser\Kulatak
+    tags:
+      - { name: net_tomas_kadlec_lunch_guy_base.service.parser }
+
   net_tomas_kadlec_lunch_guy_base.service.output:
     class: Net\TomasKadlec\LunchGuy\BaseBundle\Service\Output
 

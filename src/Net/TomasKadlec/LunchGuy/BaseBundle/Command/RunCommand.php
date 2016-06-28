@@ -23,6 +23,7 @@ class RunCommand extends ContainerAwareCommand
         $this
             ->setName('lunch_guy:run')
             ->setDescription('Return menus ...')
+            ->addOption('no-cache', 'N', InputOption::VALUE_NONE, 'Do not use cached data')
             ->addOption('output', 'o', InputOption::VALUE_REQUIRED, 'Select an application output', 'stdout')
             ->addOption('slack-channel', 's', InputOption::VALUE_REQUIRED, 'Select a channel', null)
             ->addOption('all', 'a', InputOption::VALUE_NONE, 'Run on all configured restaurants')
@@ -33,6 +34,9 @@ class RunCommand extends ContainerAwareCommand
     {
         /** @var ApplicationInterface $application */
         $application = $this->getContainer()->get('net_tomas_kadlec_lunch_guy_base.service.application');
+        if ($input->getOption('no-cache')) {
+            $application = $this->getContainer()->get('net_tomas_kadlec_lunch_guy_base.service_application.application');
+        }
 
         $outputFormat = $input->getOption('output');
         if (!$application->isOutput($outputFormat))
