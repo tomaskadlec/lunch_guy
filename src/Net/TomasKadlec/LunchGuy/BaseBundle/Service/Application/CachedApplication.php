@@ -2,6 +2,7 @@
 namespace Net\TomasKadlec\LunchGuy\BaseBundle\Service\Application;
 
 use Doctrine\Common\Cache\Cache;
+use Net\TomasKadlec\LunchGuy\BaseBundle\Exception\EnhanceYourCalmException;
 
 /**
  * Class CachedApplication
@@ -65,8 +66,8 @@ class CachedApplication extends Application
         if ($this->cache->contains($restaurantId)) {
             $cached = $this->cache->fetch($restaurantId)['cached']->getTimestamp();
             $now = (new \DateTime())->getTimestamp();
-            if ($now - $cached < 180)
-                throw new \RuntimeException('Invalidation rate too big.');
+            if ($now - $cached < 60)
+                throw new EnhanceYourCalmException();
             $this->cache->delete($restaurantId);
             return true;
         }

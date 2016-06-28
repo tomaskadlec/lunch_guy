@@ -2,9 +2,11 @@
 namespace Net\TomasKadlec\LunchGuy\UiBundle\Controller;
 
 use GuzzleHttp\Client;
+use Net\TomasKadlec\LunchGuy\BaseBundle\Exception\EnhanceYourCalmException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class DefaultController
@@ -32,8 +34,8 @@ class DefaultController extends Controller
      * @Route("/restaurants/{restaurantId}/delete", methods={"GET"})
      */
     public function  deleteAction($restaurantId) {
-       $this->getApplication()->invalidate($restaurantId);
-       return $this->redirectToRoute("net_tomaskadlec_lunchguy_default_index");
+        $this->getApplication()->invalidate($restaurantId);
+        return $this->redirectToRoute("net_tomaskadlec_lunchguy_ui_default_index");
     }
 
     /**
