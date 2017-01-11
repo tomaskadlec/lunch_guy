@@ -1,11 +1,12 @@
-FROM php:7-cli
+FROM php:7-fpm
 MAINTAINER Tomáš Kukrál <kukratom@fit.cvut.cz>
 
-ENV destdir /usr/src/app
+ENV destdir /var/www/html/
 
 RUN apt-get -y update && \
   apt-get -y install git && \
   apt-get -y clean
+
 
 COPY . $destdir
 WORKDIR $destdir
@@ -13,5 +14,6 @@ WORKDIR $destdir
 RUN curl -sS https://getcomposer.org/installer | php
 RUN php composer.phar --no-interaction install
 
-EXPOSE 80
-CMD php bin/console server:run 0.0.0.0:80
+RUN chown -Rv www-data ${destdir}/var/
+
+VOLUME $destdir
